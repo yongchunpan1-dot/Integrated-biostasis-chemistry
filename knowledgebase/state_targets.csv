@@ -1,0 +1,16 @@
+state_target,primary_descriptor,weight
+EV_membrane_integrity,membrane_stabilizer,1.0
+EV_particle_recovery,polymer,0.8
+Protein_structure,protein_stabilizer,1.0
+Protein_activity,antioxidant,0.9
+RNA_fidelity,nucleic_acid_protective,1.0
+DNA_fidelity,nucleic_acid_protective,1.0
+Thermal_stress_resistance,osmolyte,0.8
+Long_term_storage,glass_former,1.0
+Oxidative_stress_resistance,antioxidant,1.0
+Freeze_thaw_resistance,glass_former,0.9
+Mineral_encapsulation,mineralizing,0.7
+Hydrated_constraint,hydrogel,0.7
+PCR_readout_compatibility,pcr_compatibility,1.0
+LCMS_readout_compatibility,lcms_compatibility,1.0
+EV_assay_compatibility,ev_compatibility,1.0
