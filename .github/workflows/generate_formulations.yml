@@ -1,0 +1,29 @@
+name: Generate IBC Formulations
+
+on:
+  workflow_dispatch:
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - run: pip install pandas numpy
+
+      - run: mkdir -p outputs
+
+      - run: |
+          python ranking/generate_formulations.py \
+            --top 48 \
+            --output outputs/top48_formulations.csv
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: top48-formulations
+          path: outputs/top48_formulations.csv
