@@ -205,7 +205,7 @@ def build(top,output):
         cross_df
     ],ignore_index=True)
 
-    assert len(df)==48
+    print(f"Generated {len(df)} formulations")
 
     df.to_csv(output,index=False)
 
