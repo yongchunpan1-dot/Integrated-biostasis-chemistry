@@ -1,0 +1,17 @@
+material,category,entropy_module,pubchem_cid,cas,fda_iid,gras,source,confidence,status
+Trehalose,sugar,structural,,,,literature_seed,high,active
+Sucrose,sugar,structural,,,,literature_seed,high,active
+Mannitol,polyol,structural,,,,literature_seed,high,active
+Ectoine,osmolyte,structural,,,,literature_seed,high,active
+Hydroxyectoine,osmolyte,structural,,,,literature_seed,high,active
+Betaine,osmolyte,structural,,,,literature_seed,high,active
+Arginine,amino_acid,structural,,,,literature_seed,high,active
+Histidine,amino_acid,structural,,,,literature_seed,high,active
+Dextran,polymer,interface,,,,literature_seed,high,active
+Pullulan,polymer,interface,,,,literature_seed,high,active
+PEG,polymer,interface,,,,literature_seed,high,active
+PVP,polymer,interface,,,,literature_seed,high,active
+Alginate,hydrogel,constraint,,,,literature_seed,high,active
+Chitosan,hydrogel,constraint,,,,literature_seed,high,active
+Silica,mineral,constraint,,,,literature_seed,high,active
+Calcium_Phosphate,mineral,constraint,,,,literature_seed,high,active
