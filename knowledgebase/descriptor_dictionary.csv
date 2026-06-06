@@ -1,0 +1,17 @@
+descriptor,type,description
+glass_former,boolean,forms vitrified glass-like protective matrix
+osmolyte,boolean,protects biomolecules through preferential exclusion
+membrane_stabilizer,boolean,supports membrane integrity
+protein_stabilizer,boolean,reduces unfolding aggregation
+nucleic_acid_protective,boolean,preserves amplifiable nucleic acids
+antioxidant,boolean,reduces oxidative damage
+chelator,categorical,none weak medium strong
+polymer,boolean,macromolecular crowding or interface stabilization
+hydrogel,boolean,forms hydrated physical network
+mineralizing,boolean,forms silica or calcium phosphate shell
+water_solubility,categorical,low medium high
+ev_compatibility,categorical,low medium high
+pcr_compatibility,categorical,low medium high
+lcms_compatibility,categorical,low medium high
+biocompatibility,categorical,low medium high
+fda_status,categorical,approved excipient gras unknown
