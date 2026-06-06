@@ -1,0 +1,17 @@
+source_id,source_domain,source_type,status,priority,notes
+CRYO001,Cryopreservation,Primary_Literature,planned,high,Cryobiology literature
+CRYO002,Cryopreservation,Review,planned,high,Cryopreservation reviews
+LYO001,Lyophilization,Primary_Literature,planned,high,Freeze-drying excipients
+VAC001,Vaccine_Stabilization,Primary_Literature,planned,high,Vaccine formulation excipients
+PROT001,Protein_Formulation,Primary_Literature,planned,high,Protein stabilization additives
+MAB001,Monoclonal_Antibody_Formulation,Primary_Literature,planned,high,mAb formulation literature
+CELL001,Cell_Therapy,Primary_Literature,planned,high,Cell therapy preservation
+EV001,Extracellular_Vesicle_Preservation,Primary_Literature,planned,high,EV storage literature
+RNA001,Nucleic_Acid_Preservation,Primary_Literature,planned,high,RNA stabilization literature
+BIO001,Biomaterials,Primary_Literature,planned,high,Hydrogel and biomaterial systems
+MIN001,Biomineralization,Primary_Literature,planned,high,Silica and CaP encapsulation
+FDA001,FDA_IID,Regulatory_Database,planned,high,Inactive Ingredient Database
+GRAS001,GRAS,Regulatory_Database,planned,high,Generally Recognized As Safe
+USP001,USP_NF,Compendial,planned,medium,Pharmaceutical excipients
+EXC001,Excipient_Database,Database,planned,medium,Commercial excipient databases
+PUB001,PubChem,Database,planned,medium,Chemical descriptors and metadata
