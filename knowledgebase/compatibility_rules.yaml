@@ -1,0 +1,109 @@
+Trehalose:
+  pcr: high
+  lcms: high
+  ev: high
+
+Sucrose:
+  pcr: high
+  lcms: high
+  ev: high
+
+Mannitol:
+  pcr: high
+  lcms: high
+  ev: high
+
+Ectoine:
+  pcr: high
+  lcms: high
+  ev: high
+
+Hydroxyectoine:
+  pcr: high
+  lcms: high
+  ev: high
+
+Betaine:
+  pcr: high
+  lcms: high
+  ev: high
+
+Arginine:
+  pcr: high
+  lcms: medium
+  ev: high
+
+Proline:
+  pcr: high
+  lcms: high
+  ev: high
+
+Glycerol:
+  pcr: high
+  lcms: medium
+  ev: high
+
+PEG:
+  pcr: medium
+  lcms: low
+  ev: high
+
+PVP:
+  pcr: medium
+  lcms: low
+  ev: medium
+
+Dextran:
+  pcr: medium
+  lcms: low
+  ev: high
+
+Ficoll:
+  pcr: medium
+  lcms: low
+  ev: medium
+
+Silica:
+  pcr: medium
+  lcms: low
+  ev: high
+
+Alginate:
+  pcr: low
+  lcms: low
+  ev: medium
+
+Chitosan:
+  pcr: low
+  lcms: low
+  ev: medium
+
+EDTA:
+  pcr: high
+  lcms: medium
+  ev: medium
+
+EGTA:
+  pcr: high
+  lcms: medium
+  ev: medium
+
+DTPA:
+  pcr: high
+  lcms: medium
+  ev: medium
+
+HEPES:
+  pcr: high
+  lcms: high
+  ev: high
+
+PBS:
+  pcr: high
+  lcms: high
+  ev: high
+
+Tris:
+  pcr: high
+  lcms: high
+  ev: high
