@@ -1,0 +1,35 @@
+domain,priority,keyword
+EV,high,exosome preservation
+EV,high,extracellular vesicle preservation
+EV,high,extracellular vesicle storage
+EV,high,exosome storage
+EV,high,EV stabilization
+EV,high,membrane stabilization
+EV,medium,lipid vesicle stabilization
+EV,medium,liposome stabilization
+CRYO,high,cryopreservation
+CRYO,high,freeze thaw protection
+CRYO,high,freeze drying stabilization
+CRYO,high,lyophilization excipients
+PROTEIN,high,protein stabilization
+PROTEIN,high,protein formulation
+PROTEIN,high,antibody formulation
+PROTEIN,high,enzyme stabilization
+RNA_DNA,high,nucleic acid stabilization
+RNA_DNA,high,RNA preservation
+RNA_DNA,high,DNA preservation
+VACCINE,high,vaccine stabilization
+VACCINE,high,mRNA vaccine stabilization
+OSMOLYTE,high,osmolyte protection
+OSMOLYTE,high,compatible solute
+BIOMINERALIZATION,high,biomineralization
+BIOMINERALIZATION,high,silicification
+BIOMINERALIZATION,high,silica encapsulation
+BIOMINERALIZATION,high,calcium phosphate encapsulation
+HYDROGEL,high,hydrogel preservation
+HYDROGEL,high,hydrogel encapsulation
+EXCIPIENT,high,pharmaceutical excipient
+EXCIPIENT,high,FDA inactive ingredient
+ANTIOXIDANT,high,oxidative protection
+CHELATION,high,metal chelation stabilization
+CHELATION,medium,nuclease inhibition
