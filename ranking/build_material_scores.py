@@ -7,12 +7,20 @@ ROOT = Path(__file__).resolve().parents[1]
 KB = ROOT / 'knowledgebase'
 OUT = ROOT / 'outputs'
 
-registry = pd.read_csv(KB / 'material_registry.csv')
+active_core_path = KB / 'active_core_library.csv'
+registry_path = KB / 'material_registry.csv'
+
+if active_core_path.exists():
+    registry = pd.read_csv(active_core_path)
+    source_label = 'active_core_library.csv'
+else:
+    registry = pd.read_csv(registry_path)
+    source_label = 'material_registry.csv'
 
 try:
     evidence = pd.read_csv(KB / 'material_evidence_registry.csv')
 except Exception:
-    evidence = pd.DataFrame(columns=['material','evidence_type','assay','target','evidence_strength'])
+    evidence = pd.DataFrame(columns=['material','pmid','evidence_type','assay','target','evidence_strength'])
 
 EVIDENCE_WEIGHTS = {
     'ev_preservation': 5,
@@ -38,13 +46,20 @@ STRENGTH_WEIGHTS = {
     'low': 0.3
 }
 
+required_registry_cols = {'material','category','entropy_module','confidence','status'}
+missing_registry_cols = required_registry_cols - set(registry.columns)
+if missing_registry_cols:
+    raise ValueError(f'{source_label} is missing required columns: {sorted(missing_registry_cols)}')
+
 base = registry[['material','category','entropy_module','confidence','status']].copy()
+base = base.drop_duplicates(subset=['material'])
 
 confidence_map = {'high':10,'medium':7,'low':4}
 base['confidence_score'] = base['confidence'].astype(str).str.lower().map(confidence_map).fillna(5)
 
 if len(evidence):
     evidence = evidence.copy()
+    evidence = evidence[evidence['material'].isin(base['material'])]
     evidence['base_evidence_weight'] = evidence['evidence_type'].astype(str).str.lower().map(EVIDENCE_WEIGHTS).fillna(1)
     evidence['strength_weight'] = evidence['evidence_strength'].astype(str).str.lower().map(STRENGTH_WEIGHTS).fillna(0.5)
     evidence['weighted_evidence'] = evidence['base_evidence_weight'] * evidence['strength_weight']
@@ -88,6 +103,6 @@ OUT.mkdir(exist_ok=True)
 scores.to_csv(OUT / 'material_scores.csv', index=False)
 scores.to_csv(KB / 'material_scores.csv', index=False)
 
-print(f'Generated {len(scores)} material scores')
+print(f'Generated {len(scores)} material scores from {source_label}')
 print('Output: outputs/material_scores.csv')
 print('Output: knowledgebase/material_scores.csv')
