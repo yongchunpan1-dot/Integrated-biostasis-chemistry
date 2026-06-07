@@ -16,13 +16,14 @@ def balance(m, p, n):
     return max(0, 1 - cv)
 
 
-def score(mm, pp, nn, risk, mechanism_factor):
+def score(mm, pp, nn, risk, mechanism_factor, family_factor):
     cov = (mm + pp + nn) / 3
     bal = balance(mm, pp, nn)
     return (
-        0.45 * cov +
-        0.30 * bal +
-        0.15 * mechanism_factor -
+        0.40 * cov +
+        0.25 * bal +
+        0.20 * mechanism_factor +
+        0.15 * family_factor -
         0.10 * risk
     )
 
@@ -31,6 +32,7 @@ def row_to_material(row):
     return {
         'material': row.material,
         'label': row.entropy_control_label,
+        'family': row.family,
         'membrane': float(row.membrane_score),
         'protein': float(row.protein_score),
         'na': float(row.nucleic_acid_score),
@@ -38,20 +40,32 @@ def row_to_material(row):
     }
 
 
+def family_diverse(combo):
+    families = [x['family'] for x in combo]
+    return len(families) == len(set(families))
+
+
 def summarize_combo(combo, group, idx):
+    if not family_diverse(combo):
+        return None
+
     mm = sum(x['membrane'] for x in combo)
     pp = sum(x['protein'] for x in combo)
     nn = sum(x['na'] for x in combo)
     risk = sum(x['risk'] for x in combo)
     labels = {x['label'] for x in combo}
+    families = {x['family'] for x in combo}
+
     mechanism_factor = len(labels) / 3
-    tfi = score(mm, pp, nn, risk, mechanism_factor)
+    family_factor = len(families) / len(combo)
+    tfi = score(mm, pp, nn, risk, mechanism_factor, family_factor)
 
     return [
         f'IBC-{group}-{idx:03d}',
         group,
         ';'.join(x['material'] for x in combo),
         ';'.join(sorted(labels)),
+        ';'.join(sorted(families)),
         mm,
         pp,
         nn,
@@ -63,14 +77,18 @@ def summarize_combo(combo, group, idx):
 def ranked_combinations(materials, group, limit, combo_size=2):
     candidates = []
     for combo in itertools.combinations(materials, combo_size):
-        candidates.append(summarize_combo(combo, group, len(candidates) + 1))
+        row = summarize_combo(combo, group, len(candidates) + 1)
+        if row is not None:
+            candidates.append(row)
     return sorted(candidates, key=lambda x: x[-1], reverse=True)[:limit]
 
 
 def ranked_cross_product(pools, keys, group, limit):
     candidates = []
     for combo in itertools.product(*(pools[k] for k in keys)):
-        candidates.append(summarize_combo(combo, group, len(candidates) + 1))
+        row = summarize_combo(combo, group, len(candidates) + 1)
+        if row is not None:
+            candidates.append(row)
     return sorted(candidates, key=lambda x: x[-1], reverse=True)[:limit]
 
 
@@ -80,6 +98,7 @@ def build(top, output):
     required = {
         'material',
         'entropy_control_label',
+        'family',
         'membrane_score',
         'protein_score',
         'nucleic_acid_score',
@@ -104,6 +123,7 @@ def build(top, output):
         'group',
         'materials',
         'entropy_control_labels',
+        'families',
         'membrane',
         'protein',
         'na',
@@ -111,9 +131,9 @@ def build(top, output):
         'predicted_tfi',
     ]
 
-    # Keep the output stratified instead of globally sorting everything.
-    # The first phase asks: within each entropy-control principle, which combinations work best?
-    # The second phase asks: which cross-principle combinations are promising?
+    # Stratified first-round DOE:
+    # 1) first identify strong same-principle, cross-family formulations;
+    # 2) then test dual- and triple-principle cross formulations.
     grouped_rows = []
     grouped_rows.extend(ranked_combinations(physical, 'P2', 8, combo_size=2))
     grouped_rows.extend(ranked_combinations(chemical, 'C2', 8, combo_size=2))
@@ -124,10 +144,9 @@ def build(top, output):
     grouped_rows.extend(ranked_cross_product(pools, ('C', 'E'), 'CE', 4))
     grouped_rows.extend(ranked_cross_product(pools, ('P', 'C', 'E'), 'PCE', 8))
 
-    df = pd.DataFrame(grouped_rows, columns=columns)
-    df = df.head(top)
+    df = pd.DataFrame(grouped_rows, columns=columns).head(top)
 
-    print(f'Generated {len(df)} stratified combination formulations')
+    print(f'Generated {len(df)} family-diverse stratified formulations')
     df.to_csv(output, index=False)
     print('\nFormulation summary:')
     print(df.groupby('group').size())
