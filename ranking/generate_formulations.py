@@ -60,6 +60,20 @@ def summarize_combo(combo, group, idx):
     ]
 
 
+def ranked_combinations(materials, group, limit, combo_size=2):
+    candidates = []
+    for combo in itertools.combinations(materials, combo_size):
+        candidates.append(summarize_combo(combo, group, len(candidates) + 1))
+    return sorted(candidates, key=lambda x: x[-1], reverse=True)[:limit]
+
+
+def ranked_cross_product(pools, keys, group, limit):
+    candidates = []
+    for combo in itertools.product(*(pools[k] for k in keys)):
+        candidates.append(summarize_combo(combo, group, len(candidates) + 1))
+    return sorted(candidates, key=lambda x: x[-1], reverse=True)[:limit]
+
+
 def build(top, output):
     m = pd.read_csv(MATRIX_PATH)
 
@@ -85,41 +99,6 @@ def build(top, output):
         'E': encapsulation,
     }
 
-    rows = []
-
-    # Single-mechanism combinations: true formulations with two materials from the same principle.
-    single_specs = [
-        ('P2', 'P', 6),
-        ('C2', 'C', 5),
-        ('E2', 'E', 5),
-    ]
-    for group, key, limit in single_specs:
-        candidates = []
-        for combo in itertools.combinations(pools[key], 2):
-            candidates.append(summarize_combo(combo, group, len(candidates) + 1))
-        candidates = sorted(candidates, key=lambda x: x[-1], reverse=True)[:limit]
-        rows.extend(candidates)
-
-    # Dual-mechanism combinations.
-    dual_specs = [
-        ('PC', ('P', 'C'), 8),
-        ('PE', ('P', 'E'), 8),
-        ('CE', ('C', 'E'), 6),
-    ]
-    for group, keys, limit in dual_specs:
-        candidates = []
-        for combo in itertools.product(*(pools[k] for k in keys)):
-            candidates.append(summarize_combo(combo, group, len(candidates) + 1))
-        candidates = sorted(candidates, key=lambda x: x[-1], reverse=True)[:limit]
-        rows.extend(candidates)
-
-    # Triple-mechanism combinations: one material from each entropy-control principle.
-    triple = []
-    for combo in itertools.product(physical, chemical, encapsulation):
-        triple.append(summarize_combo(combo, 'PCE', len(triple) + 1))
-    triple = sorted(triple, key=lambda x: x[-1], reverse=True)[:16]
-    rows.extend(triple)
-
     columns = [
         'formulation_id',
         'group',
@@ -132,10 +111,23 @@ def build(top, output):
         'predicted_tfi',
     ]
 
-    df = pd.DataFrame(rows, columns=columns)
-    df = df.sort_values('predicted_tfi', ascending=False).head(top)
+    # Keep the output stratified instead of globally sorting everything.
+    # The first phase asks: within each entropy-control principle, which combinations work best?
+    # The second phase asks: which cross-principle combinations are promising?
+    grouped_rows = []
+    grouped_rows.extend(ranked_combinations(physical, 'P2', 8, combo_size=2))
+    grouped_rows.extend(ranked_combinations(chemical, 'C2', 8, combo_size=2))
+    grouped_rows.extend(ranked_combinations(encapsulation, 'E2', 8, combo_size=2))
 
-    print(f'Generated {len(df)} true combination formulations')
+    grouped_rows.extend(ranked_cross_product(pools, ('P', 'C'), 'PC', 6))
+    grouped_rows.extend(ranked_cross_product(pools, ('P', 'E'), 'PE', 6))
+    grouped_rows.extend(ranked_cross_product(pools, ('C', 'E'), 'CE', 4))
+    grouped_rows.extend(ranked_cross_product(pools, ('P', 'C', 'E'), 'PCE', 8))
+
+    df = pd.DataFrame(grouped_rows, columns=columns)
+    df = df.head(top)
+
+    print(f'Generated {len(df)} stratified combination formulations')
     df.to_csv(output, index=False)
     print('\nFormulation summary:')
     print(df.groupby('group').size())
