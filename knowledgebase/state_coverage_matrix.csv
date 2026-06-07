@@ -1,66 +1,53 @@
-material,entropy_control_label,family,membrane_score,protein_score,nucleic_acid_score,assay_risk,notes
-Trehalose,Physical_Stabilization,Sugar,3,3,2,0,glass formation and water replacement; broad state stabilization
-Sucrose,Physical_Stabilization,Sugar,3,3,2,0,nonreducing disaccharide glass former and lyophilization stabilizer
-Raffinose,Physical_Stabilization,Sugar,2,3,2,0,oligosaccharide glass former; improves dry-state matrix stability
-
-Mannitol,Physical_Stabilization,Polyol,2,2,1,0,polyol bulking and osmotic stabilizer; crystallization risk should be monitored
-Glycerol,Physical_Stabilization,Polyol,2,2,2,0,hydration maintenance and cryoprotection
-Sorbitol,Physical_Stabilization,Polyol,2,2,1,0,polyol osmotic and hydration stabilizer
-Ethylene_Glycol,Physical_Stabilization,Polyol,2,1,1,2,classic cryoprotective polyol; toxicity/assay risk
-Propylene_Glycol,Physical_Stabilization,Polyol,1,1,1,2,small polyol cosolvent/cryoprotectant; assay risk
-
-Ectoine,Physical_Stabilization,Compatible_Solute,3,3,2,0,compatible solute; preferential exclusion and hydration shell stabilization
-Hydroxyectoine,Physical_Stabilization,Compatible_Solute,3,3,2,0,ectoine-family compatible solute with strong hydration protection
-Betaine,Physical_Stabilization,Compatible_Solute,2,2,2,0,zwitterionic osmolyte; broad compatible-solute stabilization
-TMAO,Physical_Stabilization,Compatible_Solute,1,3,1,0,protein-folding osmolyte; weaker direct membrane/NA rationale
-Carnitine,Physical_Stabilization,Compatible_Solute,1,2,1,0,zwitterionic osmolyte candidate
-
-Arginine,Physical_Stabilization,Amino_Acid,1,3,1,0,protein anti-aggregation and solubility enhancer
-Proline,Physical_Stabilization,Amino_Acid,2,3,1,0,osmoprotective amino acid and protein stabilizer
-Histidine,Physical_Stabilization,Amino_Acid,1,2,1,0,biopharma amino acid stabilizer and mild buffering role
-Leucine,Physical_Stabilization,Amino_Acid,1,2,1,0,spray-drying and particle morphology stabilizer
-Methionine,Chemical_Quenching,Amino_Acid,1,3,1,0,sacrificial oxidation sink for proteins and formulation systems
-
-PEG_mid_MW,Physical_Stabilization,Polymer,2,2,1,1,polymer crowding and interface stabilization; cleanup/PCR interference risk
-PVP_mid_MW,Physical_Stabilization,Polymer,2,2,1,1,polymer anti-aggregation and matrix stabilizer; cleanup risk
-Dextran_mid_MW,Physical_Stabilization,Polymer,2,2,1,1,neutral polysaccharide crowding/matrix stabilizer
-Pullulan,Physical_Stabilization,Polymer,2,3,2,1,film-forming sugar polymer and dry-state matrix stabilizer
-Ficoll,Physical_Stabilization,Polymer,1,2,1,1,neutral crowding polymer; viscosity and cleanup risk
-Hydroxyethyl_Starch,Physical_Stabilization,Polymer,2,2,1,1,extracellular cryoprotective polymer and crowding stabilizer
-Polyampholyte,Isolation_Encapsulation,Polymer,2,2,2,1,polyionic confinement and cryoprotective matrix behavior
-Carboxylated_Polylysine,Isolation_Encapsulation,Polymer,2,2,2,1,polyampholyte-like polymer; confinement and cryoprotection
-
-Poloxamer188,Physical_Stabilization,Surfactant,3,2,1,0,membrane and air-liquid interface stabilization
-Poloxamer407,Physical_Stabilization,Surfactant,2,1,1,1,poloxamer comparator with thermoresponsive/viscosity effects
-Tween20,Physical_Stabilization,Surfactant,2,2,1,1,nonionic surfactant for interface protection; assay interference possible
-Tween80,Physical_Stabilization,Surfactant,2,2,1,1,nonionic surfactant with oxidation/degradation risk
-
-Cholesterol,Physical_Stabilization,Lipid,3,1,0,1,membrane packing and rigidity stabilizer; low protein/NA direct benefit
-Phosphatidylcholine,Physical_Stabilization,Lipid,3,1,0,1,phospholipid membrane support; low protein/NA direct benefit
-
-Cyclodextrin,Physical_Stabilization,Cyclodextrin,2,2,1,1,complexation and membrane/interface stabilization; cargo extraction risk possible
-Hydroxypropyl_Beta_Cyclodextrin,Physical_Stabilization,Cyclodextrin,2,2,1,1,biocompatible cyclodextrin derivative; solubilization and interface effects
-
-DMSO,Chemical_Quenching,Cryoprotectant,2,2,2,2,cryoprotectant and solvent; high assay and membrane perturbation risk
-
-Glutathione,Chemical_Quenching,Antioxidant,2,3,2,0,redox buffer and oxidation suppression
-Trolox,Chemical_Quenching,Antioxidant,2,3,1,0,lipid/protein oxidation suppression
-N_Acetylcysteine,Chemical_Quenching,Antioxidant,1,2,1,0,thiol antioxidant and redox protection
-Ascorbate,Chemical_Quenching,Antioxidant,1,2,1,1,antioxidant with possible pro-oxidant behavior depending on metal context
-Ergothioneine,Chemical_Quenching,Antioxidant,2,2,1,0,stable biological antioxidant candidate
-
-EDTA,Chemical_Quenching,Chelator,1,2,3,1,metal chelation and nuclease inhibition; may affect metal-dependent assays/enzymes
-EGTA,Chemical_Quenching,Chelator,1,2,2,1,calcium-selective chelation; possible assay/enzyme interference
-DTPA,Chemical_Quenching,Chelator,1,2,3,1,strong metal chelation and nuclease suppression; assay risk
-Phytate,Chemical_Quenching,Chelator,1,1,2,1,multivalent chelator and antioxidant-adjacent candidate
-
-Silicic_Acid,Isolation_Encapsulation,Mineral,3,3,3,1,biomineral confinement; isolates state and limits exposure/diffusion
-Calcium_Phosphate,Isolation_Encapsulation,Mineral,3,3,3,1,biocompatible mineral encapsulation and confinement
-Calcium_Carbonate,Isolation_Encapsulation,Mineral,2,2,2,1,pH-responsive mineral matrix and confinement candidate
-
-Alginate,Isolation_Encapsulation,Hydrogel,2,2,2,1,ionic hydrogel confinement; diffusion restriction and matrix protection
-Chitosan,Isolation_Encapsulation,Hydrogel,2,2,2,1,cationic polymeric confinement; nucleic acid interaction possible
-Hyaluronic_Acid,Isolation_Encapsulation,Hydrogel,2,2,2,1,hydrated biopolymer matrix and confinement candidate
-Agarose,Isolation_Encapsulation,Hydrogel,2,2,2,0,neutral gel matrix confinement with low chemical interference
-
-SAIB,Isolation_Encapsulation,Depot_Matrix,1,1,1,1,vaccine depot/formulation excipient; confinement candidate but uncertain assay compatibility
+material,entropy_control_label,family,subfamily,membrane_score,protein_score,nucleic_acid_score,assay_risk,notes
+Trehalose,Physical_Stabilization,Sugar,Disaccharide,3,3,2,0,glass formation and water replacement; broad state stabilization
+Sucrose,Physical_Stabilization,Sugar,Disaccharide,3,3,2,0,nonreducing disaccharide glass former and lyophilization stabilizer
+Raffinose,Physical_Stabilization,Sugar,Oligosaccharide,2,3,2,0,oligosaccharide glass former; improves dry-state matrix stability
+Mannitol,Physical_Stabilization,Polyol,Sugar_Alcohol,2,2,1,0,polyol bulking and osmotic stabilizer; crystallization risk should be monitored
+Glycerol,Physical_Stabilization,Polyol,Glycerol_Type,2,2,2,0,hydration maintenance and cryoprotection
+Sorbitol,Physical_Stabilization,Polyol,Sugar_Alcohol,2,2,1,0,polyol osmotic and hydration stabilizer
+Ethylene_Glycol,Physical_Stabilization,Polyol,Glycol,2,1,1,2,classic cryoprotective polyol; toxicity/assay risk
+Propylene_Glycol,Physical_Stabilization,Polyol,Glycol,1,1,1,2,small polyol cosolvent/cryoprotectant; assay risk
+Ectoine,Physical_Stabilization,Compatible_Solute,Ectoine_Family,3,3,2,0,compatible solute; preferential exclusion and hydration shell stabilization
+Hydroxyectoine,Physical_Stabilization,Compatible_Solute,Ectoine_Family,3,3,2,0,ectoine-family compatible solute with strong hydration protection
+Betaine,Physical_Stabilization,Compatible_Solute,Methylamine_Osmolyte,2,2,2,0,zwitterionic osmolyte; broad compatible-solute stabilization
+TMAO,Physical_Stabilization,Compatible_Solute,Methylamine_Osmolyte,1,3,1,0,protein-folding osmolyte; weaker direct membrane/NA rationale
+Carnitine,Physical_Stabilization,Compatible_Solute,Quaternary_Amine,1,2,1,0,zwitterionic osmolyte candidate
+Arginine,Physical_Stabilization,Amino_Acid,Basic_AA,1,3,1,0,protein anti-aggregation and solubility enhancer
+Proline,Physical_Stabilization,Amino_Acid,Osmoprotective_AA,2,3,1,0,osmoprotective amino acid and protein stabilizer
+Histidine,Physical_Stabilization,Amino_Acid,Basic_AA,1,2,1,0,biopharma amino acid stabilizer and mild buffering role
+Leucine,Physical_Stabilization,Amino_Acid,Hydrophobic_AA,1,2,1,0,spray-drying and particle morphology stabilizer
+Methionine,Chemical_Quenching,Amino_Acid,Sulfur_AA,1,3,1,0,sacrificial oxidation sink for proteins and formulation systems
+PEG_mid_MW,Physical_Stabilization,Polymer,PEG,2,2,1,1,polymer crowding and interface stabilization; cleanup/PCR interference risk
+PVP_mid_MW,Physical_Stabilization,Polymer,PVP,2,2,1,1,polymer anti-aggregation and matrix stabilizer; cleanup risk
+Dextran_mid_MW,Physical_Stabilization,Polymer,Polysaccharide_Polymer,2,2,1,1,neutral polysaccharide crowding/matrix stabilizer
+Pullulan,Physical_Stabilization,Polymer,Polysaccharide_Polymer,2,3,2,1,film-forming sugar polymer and dry-state matrix stabilizer
+Ficoll,Physical_Stabilization,Polymer,Polysaccharide_Polymer,1,2,1,1,neutral crowding polymer; viscosity and cleanup risk
+Hydroxyethyl_Starch,Physical_Stabilization,Polymer,Starch_Derivative,2,2,1,1,extracellular cryoprotective polymer and crowding stabilizer
+Polyampholyte,Isolation_Encapsulation,Polymer,Polyampholyte,2,2,2,1,polyionic confinement and cryoprotective matrix behavior
+Carboxylated_Polylysine,Isolation_Encapsulation,Polymer,Polyampholyte,2,2,2,1,polyampholyte-like polymer; confinement and cryoprotection
+Poloxamer188,Physical_Stabilization,Surfactant,Poloxamer,3,2,1,0,membrane and air-liquid interface stabilization
+Poloxamer407,Physical_Stabilization,Surfactant,Poloxamer,2,1,1,1,poloxamer comparator with thermoresponsive/viscosity effects
+Tween20,Physical_Stabilization,Surfactant,Tween,2,2,1,1,nonionic surfactant for interface protection; assay interference possible
+Tween80,Physical_Stabilization,Surfactant,Tween,2,2,1,1,nonionic surfactant with oxidation/degradation risk
+Cholesterol,Physical_Stabilization,Lipid,Sterol,3,1,0,1,membrane packing and rigidity stabilizer; low protein/NA direct benefit
+Phosphatidylcholine,Physical_Stabilization,Lipid,Phospholipid,3,1,0,1,phospholipid membrane support; low protein/NA direct benefit
+Cyclodextrin,Physical_Stabilization,Cyclodextrin,Native_CD,2,2,1,1,complexation and membrane/interface stabilization; cargo extraction risk possible
+Hydroxypropyl_Beta_Cyclodextrin,Physical_Stabilization,Cyclodextrin,Modified_CD,2,2,1,1,biocompatible cyclodextrin derivative; solubilization and interface effects
+DMSO,Chemical_Quenching,Cryoprotectant,Penetrating_CPA,2,2,2,2,cryoprotectant and solvent; high assay and membrane perturbation risk
+Glutathione,Chemical_Quenching,Antioxidant,Thiol_Antioxidant,2,3,2,0,redox buffer and oxidation suppression
+Trolox,Chemical_Quenching,Antioxidant,VitaminE_Analog,2,3,1,0,lipid/protein oxidation suppression
+N_Acetylcysteine,Chemical_Quenching,Antioxidant,Thiol_Antioxidant,1,2,1,0,thiol antioxidant and redox protection
+Ascorbate,Chemical_Quenching,Antioxidant,VitaminC_Analog,1,2,1,1,antioxidant with possible pro-oxidant behavior depending on metal context
+Ergothioneine,Chemical_Quenching,Antioxidant,Sulfur_Antioxidant,2,2,1,0,stable biological antioxidant candidate
+EDTA,Chemical_Quenching,Chelator,Broad_Chelator,1,2,3,1,metal chelation and nuclease inhibition; may affect metal-dependent assays/enzymes
+EGTA,Chemical_Quenching,Chelator,Calcium_Chelator,1,2,2,1,calcium-selective chelation; possible assay/enzyme interference
+DTPA,Chemical_Quenching,Chelator,Broad_Chelator,1,2,3,1,strong metal chelation and nuclease suppression; assay risk
+Phytate,Chemical_Quenching,Chelator,Polyphosphate_Chelator,1,1,2,1,multivalent chelator and antioxidant-adjacent candidate
+Silicic_Acid,Isolation_Encapsulation,Mineral,Silica,3,3,3,1,biomineral confinement; isolates state and limits exposure/diffusion
+Calcium_Phosphate,Isolation_Encapsulation,Mineral,CaP,3,3,3,1,biocompatible mineral encapsulation and confinement
+Calcium_Carbonate,Isolation_Encapsulation,Mineral,Carbonate,2,2,2,1,pH-responsive mineral matrix and confinement candidate
+Alginate,Isolation_Encapsulation,Hydrogel,Ionic_Hydrogel,2,2,2,1,ionic hydrogel confinement; diffusion restriction and matrix protection
+Chitosan,Isolation_Encapsulation,Hydrogel,Cationic_Hydrogel,2,2,2,1,cationic polymeric confinement; nucleic acid interaction possible
+Hyaluronic_Acid,Isolation_Encapsulation,Hydrogel,ECM_Hydrogel,2,2,2,1,hydrated biopolymer matrix and confinement candidate
+Agarose,Isolation_Encapsulation,Hydrogel,Neutral_Hydrogel,2,2,2,0,neutral gel matrix confinement with low chemical interference
+SAIB,Isolation_Encapsulation,Depot_Matrix,Depot_Forming,1,1,1,1,vaccine depot/formulation excipient; confinement candidate but uncertain assay compatibility
