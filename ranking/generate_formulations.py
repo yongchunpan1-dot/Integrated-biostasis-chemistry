@@ -1,113 +1,149 @@
 import argparse
+import itertools
 import pandas as pd
 import numpy as np
 
 
-def balance(m,p,n):
-    x=np.array([m,p,n],dtype=float)
-    cv=x.std()/x.mean()
-    return max(0,1-cv)
+MATRIX_PATH = 'knowledgebase/state_coverage_matrix.csv'
 
 
-m=pd.read_csv('knowledgebase/state_coverage_matrix.csv')
+def balance(m, p, n):
+    x = np.array([m, p, n], dtype=float)
+    mean = x.mean()
+    if mean == 0:
+        return 0
+    cv = x.std() / mean
+    return max(0, 1 - cv)
 
 
-def score(mm,pp,nn,risk,module_factor):
-
-    cov=(mm+pp+nn)/3
-    bal=balance(mm,pp,nn)
-
+def score(mm, pp, nn, risk, mechanism_factor):
+    cov = (mm + pp + nn) / 3
+    bal = balance(mm, pp, nn)
     return (
-        0.45*cov +
-        0.30*bal +
-        0.15*module_factor -
-        0.10*risk
+        0.45 * cov +
+        0.30 * bal +
+        0.15 * mechanism_factor -
+        0.10 * risk
     )
 
 
-def build(top,output):
+def row_to_material(row):
+    return {
+        'material': row.material,
+        'label': row.entropy_control_label,
+        'membrane': float(row.membrane_score),
+        'protein': float(row.protein_score),
+        'na': float(row.nucleic_acid_score),
+        'risk': float(row.assay_risk),
+    }
 
-    s=m[m.entropy_control_label=='Physical_Stabilization']
-    c=m[m.entropy_control_label=='Chemical_Quenching']
-    e=m[m.entropy_control_label=='Isolation_Encapsulation']
 
-    structural=[]
-    chemical=[]
-    encapsulation=[]
-    cross=[]
+def summarize_combo(combo, group, idx):
+    mm = sum(x['membrane'] for x in combo)
+    pp = sum(x['protein'] for x in combo)
+    nn = sum(x['na'] for x in combo)
+    risk = sum(x['risk'] for x in combo)
+    labels = {x['label'] for x in combo}
+    mechanism_factor = len(labels) / 3
+    tfi = score(mm, pp, nn, risk, mechanism_factor)
 
-    for _,a in s.iterrows():
-        mm=a.membrane_score
-        pp=a.protein_score
-        nn=a.nucleic_acid_score
-        risk=a.assay_risk
-        tfi=score(mm,pp,nn,risk,1/3)
-        structural.append([
-            f'IBC-S-{len(structural)+1:03d}',
-            'Physical',
-            a.material,
-            mm,pp,nn,tfi
-        ])
+    return [
+        f'IBC-{group}-{idx:03d}',
+        group,
+        ';'.join(x['material'] for x in combo),
+        ';'.join(sorted(labels)),
+        mm,
+        pp,
+        nn,
+        risk,
+        tfi,
+    ]
 
-    for _,a in c.iterrows():
-        mm=a.membrane_score
-        pp=a.protein_score
-        nn=a.nucleic_acid_score
-        risk=a.assay_risk
-        tfi=score(mm,pp,nn,risk,1/3)
-        chemical.append([
-            f'IBC-C-{len(chemical)+1:03d}',
-            'Chemical',
-            a.material,
-            mm,pp,nn,tfi
-        ])
 
-    for _,a in e.iterrows():
-        mm=a.membrane_score
-        pp=a.protein_score
-        nn=a.nucleic_acid_score
-        risk=a.assay_risk
-        tfi=score(mm,pp,nn,risk,1/3)
-        encapsulation.append([
-            f'IBC-E-{len(encapsulation)+1:03d}',
-            'Encapsulation',
-            a.material,
-            mm,pp,nn,tfi
-        ])
+def build(top, output):
+    m = pd.read_csv(MATRIX_PATH)
 
-    for _,a in s.iterrows():
-        for _,b in c.iterrows():
-            for _,d in e.iterrows():
-                mm=a.membrane_score+b.membrane_score+d.membrane_score
-                pp=a.protein_score+b.protein_score+d.protein_score
-                nn=a.nucleic_acid_score+b.nucleic_acid_score+d.nucleic_acid_score
-                risk=a.assay_risk+b.assay_risk+d.assay_risk
-                tfi=score(mm,pp,nn,risk,1.0)
-                cross.append([
-                    f'IBC-X-{len(cross)+1:03d}',
-                    'Cross',
-                    a.material+';'+b.material+';'+d.material,
-                    mm,pp,nn,tfi
-                ])
+    required = {
+        'material',
+        'entropy_control_label',
+        'membrane_score',
+        'protein_score',
+        'nucleic_acid_score',
+        'assay_risk',
+    }
+    missing = required - set(m.columns)
+    if missing:
+        raise ValueError(f'{MATRIX_PATH} missing required columns: {sorted(missing)}')
 
-    columns=['formulation_id','group','materials','membrane','protein','na','predicted_tfi']
+    physical = [row_to_material(r) for _, r in m[m.entropy_control_label == 'Physical_Stabilization'].iterrows()]
+    chemical = [row_to_material(r) for _, r in m[m.entropy_control_label == 'Chemical_Quenching'].iterrows()]
+    encapsulation = [row_to_material(r) for _, r in m[m.entropy_control_label == 'Isolation_Encapsulation'].iterrows()]
 
-    structural_df=pd.DataFrame(structural,columns=columns).sort_values('predicted_tfi',ascending=False).head(12)
-    chemical_df=pd.DataFrame(chemical,columns=columns).sort_values('predicted_tfi',ascending=False).head(12)
-    encapsulation_df=pd.DataFrame(encapsulation,columns=columns).sort_values('predicted_tfi',ascending=False).head(12)
-    cross_df=pd.DataFrame(cross,columns=columns).sort_values('predicted_tfi',ascending=False).head(12)
+    pools = {
+        'P': physical,
+        'C': chemical,
+        'E': encapsulation,
+    }
 
-    df=pd.concat([structural_df,chemical_df,encapsulation_df,cross_df],ignore_index=True)
+    rows = []
 
-    print(f'Generated {len(df)} formulations')
-    df.to_csv(output,index=False)
+    # Single-mechanism combinations: true formulations with two materials from the same principle.
+    single_specs = [
+        ('P2', 'P', 6),
+        ('C2', 'C', 5),
+        ('E2', 'E', 5),
+    ]
+    for group, key, limit in single_specs:
+        candidates = []
+        for combo in itertools.combinations(pools[key], 2):
+            candidates.append(summarize_combo(combo, group, len(candidates) + 1))
+        candidates = sorted(candidates, key=lambda x: x[-1], reverse=True)[:limit]
+        rows.extend(candidates)
+
+    # Dual-mechanism combinations.
+    dual_specs = [
+        ('PC', ('P', 'C'), 8),
+        ('PE', ('P', 'E'), 8),
+        ('CE', ('C', 'E'), 6),
+    ]
+    for group, keys, limit in dual_specs:
+        candidates = []
+        for combo in itertools.product(*(pools[k] for k in keys)):
+            candidates.append(summarize_combo(combo, group, len(candidates) + 1))
+        candidates = sorted(candidates, key=lambda x: x[-1], reverse=True)[:limit]
+        rows.extend(candidates)
+
+    # Triple-mechanism combinations: one material from each entropy-control principle.
+    triple = []
+    for combo in itertools.product(physical, chemical, encapsulation):
+        triple.append(summarize_combo(combo, 'PCE', len(triple) + 1))
+    triple = sorted(triple, key=lambda x: x[-1], reverse=True)[:16]
+    rows.extend(triple)
+
+    columns = [
+        'formulation_id',
+        'group',
+        'materials',
+        'entropy_control_labels',
+        'membrane',
+        'protein',
+        'na',
+        'assay_risk',
+        'predicted_tfi',
+    ]
+
+    df = pd.DataFrame(rows, columns=columns)
+    df = df.sort_values('predicted_tfi', ascending=False).head(top)
+
+    print(f'Generated {len(df)} true combination formulations')
+    df.to_csv(output, index=False)
     print('\nFormulation summary:')
     print(df.groupby('group').size())
 
 
-if __name__=='__main__':
-    p=argparse.ArgumentParser()
-    p.add_argument('--top',type=int,default=48)
-    p.add_argument('--output',required=True)
-    a=p.parse_args()
-    build(a.top,a.output)
+if __name__ == '__main__':
+    p = argparse.ArgumentParser()
+    p.add_argument('--top', type=int, default=48)
+    p.add_argument('--output', required=True)
+    a = p.parse_args()
+    build(a.top, a.output)
