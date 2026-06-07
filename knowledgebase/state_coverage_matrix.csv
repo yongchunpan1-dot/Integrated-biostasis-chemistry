@@ -1,17 +1,92 @@
 material,mechanism_class,membrane_score,protein_score,nucleic_acid_score,assay_risk,notes
-Trehalose,Structural_Stabilization,9,5,2,0.02,membrane-biased glass-forming stabilizer
-Dextran,Structural_Stabilization,8,4,1,0.05,crowding and structural stabilization
-PEG,Structural_Stabilization,7,5,2,0.10,polymer stabilizer with cleanup risk
-Glycerol,Structural_Stabilization,7,4,3,0.03,water-state and mobility control
-PVP,Structural_Stabilization,6,5,2,0.10,polymer stabilizer with cleanup risk
-Cholesterol,Structural_Stabilization,9,4,1,0.08,strong membrane-focused stabilizer
-Poloxamer,Structural_Stabilization,8,4,1,0.08,interface and membrane stabilizer
-Trolox,Chemical_Stabilization,3,8,6,0.03,antioxidant protection
-Glutathione,Chemical_Stabilization,2,7,5,0.03,redox buffering
-Catalase,Chemical_Stabilization,2,8,4,0.05,ROS suppression enzyme
-EDTA,Chemical_Stabilization,1,3,9,0.08,metal chelation and nuclease inhibition risk for metalloenzymes
-EGTA,Chemical_Stabilization,1,3,8,0.08,calcium-selective chelation
-DTPA,Chemical_Stabilization,1,3,9,0.10,strong metal chelation
-Silica,Physical_Encapsulation,8,8,8,0.12,broad physical confinement with cleanup/PCR risk
-Calcium_Phosphate,Physical_Encapsulation,7,7,7,0.08,broad mineral confinement
-Hydrogel,Physical_Encapsulation,7,6,6,0.10,diffusion restriction and confinement
+Trehalose,Structural_Stabilization,9,8,7,0.02,sugar glass former for membrane and protein stabilization
+Sucrose,Structural_Stabilization,8,8,6,0.02,disaccharide glass former and protein stabilizer
+Raffinose,Structural_Stabilization,8,7,6,0.03,oligosaccharide glass former for dry state protection
+Maltose,Structural_Stabilization,7,7,6,0.03,reducing disaccharide candidate for sugar stabilization
+Lactose,Structural_Stabilization,7,7,5,0.04,disaccharide excipient for protein formulations
+Maltodextrin,Structural_Stabilization,7,7,5,0.04,polymeric sugar matrix for drying and vitrification
+Mannitol,Structural_Stabilization,6,8,6,0.03,polyol bulking and osmotic stabilizer
+Sorbitol,Structural_Stabilization,6,7,6,0.03,polyol water activity and osmotic stabilizer
+Xylitol,Structural_Stabilization,6,6,5,0.03,polyol osmotic stabilizer
+Erythritol,Structural_Stabilization,5,6,5,0.03,small polyol candidate for water activity control
+Glycerol,Structural_Stabilization,7,7,6,0.03,polyol mobility and hydration stabilizer
+Inositol,Structural_Stabilization,6,7,6,0.03,polyol osmoprotective stabilizer
+Ectoine,Structural_Stabilization,8,9,7,0.02,osmolyte preferential exclusion and protein protection
+Hydroxyectoine,Structural_Stabilization,8,9,7,0.02,hydroxy osmolyte for stress protection
+Betaine,Structural_Stabilization,7,8,7,0.02,osmolyte and methyl donor compatible stabilizer
+TMAO,Structural_Stabilization,6,8,6,0.05,osmolyte protein folding stabilizer with assay review needed
+Taurine,Structural_Stabilization,6,7,6,0.03,compatible osmolyte and membrane stress modulator
+Carnitine,Structural_Stabilization,6,6,5,0.03,osmolyte like zwitterionic stabilizer
+Proline,Structural_Stabilization,6,8,6,0.02,amino acid osmoprotection and protein stabilization
+Arginine,Structural_Stabilization,5,9,6,0.03,anti aggregation amino acid for protein stabilization
+Histidine,Structural_Stabilization,5,8,6,0.03,buffering amino acid and protein formulation stabilizer
+Glycine,Structural_Stabilization,5,7,6,0.02,small amino acid osmolyte and stabilizer
+Serine,Structural_Stabilization,5,6,5,0.03,polar amino acid stabilizer candidate
+Lysine,Structural_Stabilization,5,7,5,0.04,cationic amino acid stabilizer with interaction review
+Glutamine,Structural_Stabilization,5,7,5,0.04,polar amino acid stabilizer candidate
+Methionine,Structural_Stabilization,5,8,5,0.03,oxidation scavenging amino acid for protein formulations
+Albumin,Structural_Stabilization,7,8,5,0.08,protein excipient and surface blocking candidate
+Gelatin,Structural_Stabilization,7,7,5,0.08,protein polymer stabilizer and matrix former
+Casein,Structural_Stabilization,6,7,5,0.08,proteinaceous blocker and stabilizer candidate
+PEG_200,Chemical_Stabilization,6,6,4,0.08,low molecular weight PEG interface and hydration stabilizer
+PEG_400,Chemical_Stabilization,6,6,4,0.08,PEG solvent compatible interface stabilizer
+PEG_1000,Chemical_Stabilization,7,6,4,0.09,polymer crowding and interface stabilizer
+PEG_3350,Chemical_Stabilization,7,6,4,0.10,polymer crowding with cleanup risk
+PEG_8000,Chemical_Stabilization,7,6,4,0.10,high molecular weight PEG crowding with cleanup risk
+PVP,Chemical_Stabilization,7,7,5,0.09,polyvinylpyrrolidone surface and protein stabilizer
+PVP10,Chemical_Stabilization,6,7,5,0.08,low molecular weight PVP interface stabilizer
+PVP40,Chemical_Stabilization,7,7,5,0.09,medium PVP surface stabilizer
+Dextran10,Chemical_Stabilization,7,6,5,0.07,dextran crowding and colloid stabilizer
+Dextran40,Chemical_Stabilization,8,6,5,0.07,dextran crowding and matrix stabilizer
+Dextran70,Chemical_Stabilization,8,6,5,0.08,high molecular weight dextran crowding stabilizer
+Ficoll70,Chemical_Stabilization,7,6,5,0.08,neutral crowding polymer and density stabilizer
+Ficoll400,Chemical_Stabilization,7,6,5,0.09,high molecular weight crowding polymer
+Pullulan,Chemical_Stabilization,7,7,6,0.06,film forming polysaccharide and glass support
+PVA,Chemical_Stabilization,6,6,5,0.08,polyvinyl alcohol interface and film stabilizer
+HPMC,Chemical_Stabilization,6,7,5,0.08,cellulose polymer viscosity and interface stabilizer
+CMC,Chemical_Stabilization,6,6,5,0.08,carboxymethylcellulose matrix and interface stabilizer
+Methylcellulose,Chemical_Stabilization,6,6,5,0.08,cellulose matrix stabilizer
+Poloxamer188,Chemical_Stabilization,8,7,5,0.06,membrane and interface protection surfactant
+Poloxamer407,Chemical_Stabilization,7,6,5,0.08,thermoresponsive poloxamer interface stabilizer
+Tween20,Chemical_Stabilization,7,6,4,0.09,nonionic surfactant for interface stabilization
+Tween80,Chemical_Stabilization,7,6,4,0.09,nonionic surfactant for protein and membrane interfaces
+Polysorbate20,Chemical_Stabilization,7,6,4,0.09,protein formulation surfactant
+Polysorbate80,Chemical_Stabilization,7,6,4,0.09,protein formulation surfactant with oxidation risk
+Brij35,Chemical_Stabilization,6,6,4,0.10,nonionic surfactant candidate requiring assay review
+Cholesterol,Chemical_Stabilization,9,5,3,0.08,membrane rigidity and lipid domain stabilizer
+Phosphatidylcholine,Chemical_Stabilization,8,5,3,0.08,lipid membrane stabilizer candidate
+Lecithin,Chemical_Stabilization,8,5,3,0.08,phospholipid mixture for membrane interface stabilization
+Trolox,Chemical_Stabilization,3,8,6,0.03,water soluble vitamin E analog antioxidant
+Glutathione,Chemical_Stabilization,2,7,6,0.03,redox buffering and oxidative protection
+Ascorbate,Chemical_Stabilization,2,7,6,0.06,antioxidant protection with redox compatibility review
+N_Acetylcysteine,Chemical_Stabilization,2,7,6,0.05,thiol antioxidant and redox stabilizer
+Catalase,Chemical_Stabilization,2,8,4,0.05,ROS suppression enzyme for peroxide stress
+Superoxide_Dismutase,Chemical_Stabilization,2,8,4,0.05,superoxide scavenging enzyme candidate
+EDTA,Chemical_Stabilization,1,4,9,0.08,metal chelator and nuclease inhibition with enzyme risk
+EGTA,Chemical_Stabilization,1,4,8,0.08,calcium selective chelator with enzyme risk
+DTPA,Chemical_Stabilization,1,4,9,0.10,strong metal chelator with compatibility risk
+Citrate,Chemical_Stabilization,2,5,8,0.05,buffering and mild chelation for nucleic acid protection
+HEPES,Chemical_Stabilization,3,6,6,0.03,zwitterionic buffer compatible with biological assays
+Tris,Chemical_Stabilization,3,6,6,0.04,common buffer for nucleic acid and protein workflows
+PBS,Chemical_Stabilization,4,5,5,0.03,isotonic phosphate buffer baseline
+Silica,Physical_Encapsulation,9,8,7,0.12,silica mineral confinement with cleanup and PCR risk
+Silicic_Acid,Physical_Encapsulation,8,7,7,0.10,silicic acid based biomineralization precursor
+Sodium_Silicate,Physical_Encapsulation,8,7,7,0.12,silicate source for mineral confinement requiring pH control
+Mesoporous_Silica,Physical_Encapsulation,8,7,6,0.12,porous silica confinement and adsorption risk
+Calcium_Phosphate,Physical_Encapsulation,8,8,8,0.08,biocompatible mineral confinement
+Amorphous_Calcium_Phosphate,Physical_Encapsulation,8,8,8,0.08,transient calcium phosphate mineral protection
+Hydroxyapatite,Physical_Encapsulation,7,7,7,0.08,calcium phosphate mineral microenvironment
+Magnesium_Phosphate,Physical_Encapsulation,7,7,7,0.09,phosphate mineral confinement candidate
+Calcium_Carbonate,Physical_Encapsulation,7,6,6,0.09,mineral shell and pH responsive dissolution candidate
+Alginate,Physical_Encapsulation,8,7,6,0.08,ionic hydrogel diffusion constraint
+Chitosan,Physical_Encapsulation,8,7,6,0.10,cationic hydrogel and polyelectrolyte matrix
+Agarose,Physical_Encapsulation,7,6,6,0.07,neutral hydrogel physical confinement
+Gelatin_Hydrogel,Physical_Encapsulation,7,7,6,0.08,protein hydrogel matrix and diffusion constraint
+Collagen,Physical_Encapsulation,7,7,5,0.09,biopolymer hydrogel scaffold candidate
+Hyaluronic_Acid,Physical_Encapsulation,7,6,6,0.08,hydrated biopolymer matrix
+PEGDA,Physical_Encapsulation,7,6,5,0.12,photocrosslinked hydrogel with compatibility review
+Gellan_Gum,Physical_Encapsulation,7,6,6,0.08,polysaccharide hydrogel matrix
+Carrageenan,Physical_Encapsulation,7,6,6,0.09,sulfated polysaccharide hydrogel matrix
+Xanthan_Gum,Physical_Encapsulation,6,6,5,0.08,viscous polysaccharide matrix
+Guar_Gum,Physical_Encapsulation,6,6,5,0.08,galactomannan viscosity matrix
+Matrigel,Physical_Encapsulation,7,7,5,0.15,complex ECM matrix with assay and variability risk
