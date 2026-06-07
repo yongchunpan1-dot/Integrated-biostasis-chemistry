@@ -18,12 +18,6 @@ jobs:
 
       - run: mkdir -p outputs
 
-      - name: Build material scores
-        run: python ranking/build_material_scores.py
-
-      - name: Build state coverage matrix
-        run: python ranking/build_state_coverage_matrix.py
-
       - name: Generate stratified formulations
         run: |
           python ranking/generate_formulations.py \
