@@ -1,0 +1,28 @@
+alias,normalized_material
+TMOS,Silicic_Acid
+TEOS,Silicic_Acid
+Orthosilicic acid,Silicic_Acid
+Sodium silicate,Silicic_Acid
+Potassium silicate,Silicic_Acid
+Silica,Silicic_Acid
+PEG200,PEG_low_MW
+PEG400,PEG_low_MW
+PEG600,PEG_low_MW
+PEG1000,PEG_mid_MW
+PEG2000,PEG_mid_MW
+PEG3350,PEG_mid_MW
+PEG4000,PEG_mid_MW
+PEG6000,PEG_high_MW
+PEG8000,PEG_high_MW
+PEG10000,PEG_high_MW
+PVP K15,PVP_low_MW
+PVP K30,PVP_mid_MW
+PVP K90,PVP_high_MW
+Dextran 10k,Dextran_low_MW
+Dextran 40k,Dextran_mid_MW
+Dextran 70k,Dextran_mid_MW
+Dextran 150k,Dextran_high_MW
+Dextran 500k,Dextran_high_MW
+Hydroxyapatite,Calcium_Phosphate
+Amorphous calcium phosphate,Calcium_Phosphate
+CaP,Calcium_Phosphate
