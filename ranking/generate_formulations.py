@@ -27,210 +27,87 @@ def score(mm,pp,nn,risk,module_factor):
 
 def build(top,output):
 
-    s=m[m.mechanism_class=='Structural_Stabilization']
-    c=m[m.mechanism_class=='Chemical_Stabilization']
-    e=m[m.mechanism_class=='Physical_Encapsulation']
+    s=m[m.entropy_control_label=='Physical_Stabilization']
+    c=m[m.entropy_control_label=='Chemical_Quenching']
+    e=m[m.entropy_control_label=='Isolation_Encapsulation']
 
     structural=[]
     chemical=[]
     encapsulation=[]
     cross=[]
 
-    # =====================================================
-    # Structural only
-    # =====================================================
-
     for _,a in s.iterrows():
-
         mm=a.membrane_score
         pp=a.protein_score
         nn=a.nucleic_acid_score
-
         risk=a.assay_risk
-
         tfi=score(mm,pp,nn,risk,1/3)
-
         structural.append([
             f'IBC-S-{len(structural)+1:03d}',
-            'Structural',
+            'Physical',
             a.material,
-            mm,
-            pp,
-            nn,
-            tfi
+            mm,pp,nn,tfi
         ])
 
-    # =====================================================
-    # Chemical only
-    # =====================================================
-
     for _,a in c.iterrows():
-
         mm=a.membrane_score
         pp=a.protein_score
         nn=a.nucleic_acid_score
-
         risk=a.assay_risk
-
         tfi=score(mm,pp,nn,risk,1/3)
-
         chemical.append([
             f'IBC-C-{len(chemical)+1:03d}',
             'Chemical',
             a.material,
-            mm,
-            pp,
-            nn,
-            tfi
+            mm,pp,nn,tfi
         ])
 
-    # =====================================================
-    # Encapsulation only
-    # =====================================================
-
     for _,a in e.iterrows():
-
         mm=a.membrane_score
         pp=a.protein_score
         nn=a.nucleic_acid_score
-
         risk=a.assay_risk
-
         tfi=score(mm,pp,nn,risk,1/3)
-
         encapsulation.append([
             f'IBC-E-{len(encapsulation)+1:03d}',
             'Encapsulation',
             a.material,
-            mm,
-            pp,
-            nn,
-            tfi
+            mm,pp,nn,tfi
         ])
-
-    # =====================================================
-    # Cross
-    # =====================================================
 
     for _,a in s.iterrows():
         for _,b in c.iterrows():
             for _,d in e.iterrows():
-
-                mm=(
-                    a.membrane_score +
-                    b.membrane_score +
-                    d.membrane_score
-                )
-
-                pp=(
-                    a.protein_score +
-                    b.protein_score +
-                    d.protein_score
-                )
-
-                nn=(
-                    a.nucleic_acid_score +
-                    b.nucleic_acid_score +
-                    d.nucleic_acid_score
-                )
-
-                risk=(
-                    a.assay_risk +
-                    b.assay_risk +
-                    d.assay_risk
-                )
-
+                mm=a.membrane_score+b.membrane_score+d.membrane_score
+                pp=a.protein_score+b.protein_score+d.protein_score
+                nn=a.nucleic_acid_score+b.nucleic_acid_score+d.nucleic_acid_score
+                risk=a.assay_risk+b.assay_risk+d.assay_risk
                 tfi=score(mm,pp,nn,risk,1.0)
-
                 cross.append([
                     f'IBC-X-{len(cross)+1:03d}',
                     'Cross',
                     a.material+';'+b.material+';'+d.material,
-                    mm,
-                    pp,
-                    nn,
-                    tfi
+                    mm,pp,nn,tfi
                 ])
 
-    columns=[
-        'formulation_id',
-        'group',
-        'materials',
-        'membrane',
-        'protein',
-        'na',
-        'predicted_tfi'
-    ]
+    columns=['formulation_id','group','materials','membrane','protein','na','predicted_tfi']
 
-    structural_df=(
-        pd.DataFrame(structural,columns=columns)
-        .sort_values(
-            'predicted_tfi',
-            ascending=False
-        )
-        .head(12)
-    )
+    structural_df=pd.DataFrame(structural,columns=columns).sort_values('predicted_tfi',ascending=False).head(12)
+    chemical_df=pd.DataFrame(chemical,columns=columns).sort_values('predicted_tfi',ascending=False).head(12)
+    encapsulation_df=pd.DataFrame(encapsulation,columns=columns).sort_values('predicted_tfi',ascending=False).head(12)
+    cross_df=pd.DataFrame(cross,columns=columns).sort_values('predicted_tfi',ascending=False).head(12)
 
-    chemical_df=(
-        pd.DataFrame(chemical,columns=columns)
-        .sort_values(
-            'predicted_tfi',
-            ascending=False
-        )
-        .head(12)
-    )
+    df=pd.concat([structural_df,chemical_df,encapsulation_df,cross_df],ignore_index=True)
 
-    encapsulation_df=(
-        pd.DataFrame(encapsulation,columns=columns)
-        .sort_values(
-            'predicted_tfi',
-            ascending=False
-        )
-        .head(12)
-    )
-
-    cross_df=(
-        pd.DataFrame(cross,columns=columns)
-        .sort_values(
-            'predicted_tfi',
-            ascending=False
-        )
-        .head(12)
-    )
-
-    df=pd.concat([
-        structural_df,
-        chemical_df,
-        encapsulation_df,
-        cross_df
-    ],ignore_index=True)
-
-    print(f"Generated {len(df)} formulations")
-
+    print(f'Generated {len(df)} formulations')
     df.to_csv(output,index=False)
-
     print('\nFormulation summary:')
     print(df.groupby('group').size())
 
 
 if __name__=='__main__':
-
     p=argparse.ArgumentParser()
-
-    p.add_argument(
-        '--top',
-        type=int,
-        default=48
-    )
-
-    p.add_argument(
-        '--output',
-        required=True
-    )
-
+    p.add_argument('--top',type=int,default=48)
+    p.add_argument('--output',required=True)
     a=p.parse_args()
-
-    build(
-        a.top,
-        a.output
-    )
+    build(a.top,a.output)
