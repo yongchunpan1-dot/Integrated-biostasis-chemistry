@@ -8,78 +8,77 @@ KB = ROOT / 'knowledgebase'
 OUT = ROOT / 'outputs'
 
 registry = pd.read_csv(KB / 'material_registry.csv')
-evidence = pd.read_csv(KB / 'descriptor_evidence.csv')
 
 try:
-    lit = pd.read_csv(KB / 'material_evidence_registry.csv')
+    evidence = pd.read_csv(KB / 'material_evidence_registry.csv')
 except Exception:
-    lit = pd.DataFrame(columns=['material'])
+    evidence = pd.DataFrame(columns=['material','evidence_type','assay','target','evidence_strength'])
 
-pmid_counts = lit.groupby('material').size().reset_index(name='pmid_count')
 EVIDENCE_WEIGHTS = {
     'ev_preservation': 5,
+    'membrane_preservation': 4,
     'vesicle_preservation': 4,
     'liposome_preservation': 4,
-    'membrane_preservation': 4,
     'protein_stabilization': 3,
     'nucleic_acid_preservation': 3,
     'osmolyte_protection': 3,
-    'anti_aggregation': 2,
-    'anti_adsorption': 2,
-    'cryopreservation': 2,
     'biomineralization': 4,
     'diffusion_constraint': 3,
     'matrix_constraint': 3,
-    'colloid_stabilization': 2
+    'anti_aggregation': 2,
+    'anti_adsorption': 2,
+    'colloid_stabilization': 2,
+    'cryopreservation': 2,
+    'general_excipient': 1
 }
 
-if len(lit):
-    lit['evidence_weight'] = (
-        lit['evidence_type']
-        .astype(str)
-        .map(EVIDENCE_WEIGHTS)
-        .fillna(1)
-    )
+STRENGTH_WEIGHTS = {
+    'high': 1.0,
+    'medium': 0.6,
+    'low': 0.3
+}
 
-    weighted_evidence = (
-        lit.groupby('material')['evidence_weight']
-        .sum()
-        .reset_index(name='weighted_evidence_score')
-    )
-else:
-    weighted_evidence = pd.DataFrame(
-        columns=['material','weighted_evidence_score']
-    )
-
-scores = registry[['material','category','entropy_module','confidence','status']].copy()
+base = registry[['material','category','entropy_module','confidence','status']].copy()
 
 confidence_map = {'high':10,'medium':7,'low':4}
-scores['confidence_score'] = scores['confidence'].astype(str).str.lower().map(confidence_map).fillna(5)
+base['confidence_score'] = base['confidence'].astype(str).str.lower().map(confidence_map).fillna(5)
 
-mechanism_counts = evidence.groupby('material').size().reset_index(name='mechanism_count')
-scores = scores.merge(mechanism_counts,on='material',how='left')
-scores = scores.merge(pmid_counts,on='material',how='left')
-scores = scores.merge(weighted_evidence,on='material',how='left')
+if len(evidence):
+    evidence = evidence.copy()
+    evidence['base_evidence_weight'] = evidence['evidence_type'].astype(str).str.lower().map(EVIDENCE_WEIGHTS).fillna(1)
+    evidence['strength_weight'] = evidence['evidence_strength'].astype(str).str.lower().map(STRENGTH_WEIGHTS).fillna(0.5)
+    evidence['weighted_evidence'] = evidence['base_evidence_weight'] * evidence['strength_weight']
 
-scores['mechanism_count'] = scores['mechanism_count'].fillna(0)
-scores['pmid_count'] = scores['pmid_count'].fillna(0)
+    summary = evidence.groupby('material').agg(
+        evidence_count=('material','size'),
+        pmid_count=('pmid','nunique'),
+        mechanism_diversity=('evidence_type','nunique'),
+        assay_diversity=('assay','nunique'),
+        target_diversity=('target','nunique'),
+        weighted_evidence_score=('weighted_evidence','sum')
+    ).reset_index()
+else:
+    summary = pd.DataFrame(columns=['material','evidence_count','pmid_count','mechanism_diversity','assay_diversity','target_diversity','weighted_evidence_score'])
 
-scores['weighted_evidence_score'] = (
-    scores['weighted_evidence_score']
-    .fillna(0)
-)
+scores = base.merge(summary,on='material',how='left')
 
-scores['evidence_score'] = (
-    scores['weighted_evidence_score']
-).clip(upper=20)
+for col in ['evidence_count','pmid_count','mechanism_diversity','assay_diversity','target_diversity','weighted_evidence_score']:
+    scores[col] = scores[col].fillna(0)
 
 module_bonus = {'structural':2.0,'interface':1.5,'constraint':1.5}
 scores['module_bonus'] = scores['entropy_module'].astype(str).str.lower().map(module_bonus).fillna(1)
 
+scores['evidence_score'] = (
+    scores['weighted_evidence_score'] +
+    0.5*scores['mechanism_diversity'] +
+    0.3*scores['assay_diversity'] +
+    0.2*scores['target_diversity']
+).clip(upper=20)
+
 scores['overall_score'] = (
-    0.40*scores['confidence_score'] +
-    0.40*scores['evidence_score'] +
-    0.10*scores['mechanism_count'] +
+    0.35*scores['confidence_score'] +
+    0.45*scores['evidence_score'] +
+    0.10*scores['mechanism_diversity'] +
     0.10*scores['module_bonus']
 ).round(2)
 
@@ -87,6 +86,8 @@ scores = scores.sort_values('overall_score', ascending=False)
 
 OUT.mkdir(exist_ok=True)
 scores.to_csv(OUT / 'material_scores.csv', index=False)
+scores.to_csv(KB / 'material_scores.csv', index=False)
 
 print(f'Generated {len(scores)} material scores')
 print('Output: outputs/material_scores.csv')
+print('Output: knowledgebase/material_scores.csv')
