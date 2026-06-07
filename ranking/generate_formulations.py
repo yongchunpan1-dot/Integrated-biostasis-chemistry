@@ -20,11 +20,11 @@ def score(mm, pp, nn, risk, mechanism_factor, family_factor, subfamily_factor, t
     cov = (mm + pp + nn) / 3
     bal = balance(mm, pp, nn)
     return (
-        0.36 * cov +
+        0.34 * cov +
         0.22 * bal +
         0.17 * mechanism_factor +
         0.15 * family_factor +
-        0.10 * subfamily_factor +
+        0.12 * subfamily_factor +
         target_bias_bonus -
         0.10 * risk
     )
@@ -59,6 +59,12 @@ def target_bias(mm, pp, nn):
     if max_v - min_v <= 1:
         return 'Balanced'
     return max(vals, key=vals.get)
+
+
+def combo_signature(row):
+    families = tuple(sorted(row[4].split(';')))
+    subfamilies = tuple(sorted(row[5].split(';')))
+    return families, subfamilies
 
 
 def summarize_combo(combo, group, idx, desired_bias=None):
@@ -106,35 +112,41 @@ def summarize_combo(combo, group, idx, desired_bias=None):
     ]
 
 
-def select_diverse(candidates, limit):
+def select_diverse(candidates, limit, max_material_uses=2, max_family_signature=1, max_subfamily_signature=1):
     selected = []
     material_counts = {}
-    family_pair_counts = {}
+    family_signature_counts = {}
+    subfamily_signature_counts = {}
 
     for row in sorted(candidates, key=lambda x: x[-1], reverse=True):
         materials = row[2].split(';')
-        families = tuple(sorted(row[4].split(';')))
+        family_sig, subfamily_sig = combo_signature(row)
 
-        if any(material_counts.get(m, 0) >= 3 for m in materials):
+        if any(material_counts.get(m, 0) >= max_material_uses for m in materials):
             continue
-        if family_pair_counts.get(families, 0) >= 2:
+        if family_signature_counts.get(family_sig, 0) >= max_family_signature:
+            continue
+        if subfamily_signature_counts.get(subfamily_sig, 0) >= max_subfamily_signature:
             continue
 
         selected.append(row)
         for m in materials:
             material_counts[m] = material_counts.get(m, 0) + 1
-        family_pair_counts[families] = family_pair_counts.get(families, 0) + 1
+        family_signature_counts[family_sig] = family_signature_counts.get(family_sig, 0) + 1
+        subfamily_signature_counts[subfamily_sig] = subfamily_signature_counts.get(subfamily_sig, 0) + 1
 
         if len(selected) >= limit:
             break
 
+    # Relax only the family-signature cap if a small group cannot reach its quota.
+    # Keep direct family/subfamily diversity inside each formulation intact.
     if len(selected) < limit:
-        seen = {tuple(r[2].split(';')) for r in selected}
+        seen_material_sets = {tuple(r[2].split(';')) for r in selected}
         for row in sorted(candidates, key=lambda x: x[-1], reverse=True):
             key = tuple(row[2].split(';'))
-            if key not in seen:
+            if key not in seen_material_sets:
                 selected.append(row)
-                seen.add(key)
+                seen_material_sets.add(key)
             if len(selected) >= limit:
                 break
 
@@ -203,12 +215,12 @@ def build(top, output):
 
     grouped_rows = []
 
-    # Same-principle formulations: identify which internal strategy pairs work.
+    # Same-principle formulations: broad coverage inside each entropy-control principle.
     grouped_rows.extend(ranked_combinations(physical, 'P2', 8, combo_size=2))
     grouped_rows.extend(ranked_combinations(chemical, 'C2', 8, combo_size=2))
     grouped_rows.extend(ranked_combinations(encapsulation, 'E2', 8, combo_size=2))
 
-    # Cross-principle formulations: preserve space for dual mechanisms.
+    # Dual-principle formulations: retain cross-mechanism candidates without allowing one family pair to dominate.
     grouped_rows.extend(ranked_cross_product(pools, ('P', 'C'), 'PC', 6))
     grouped_rows.extend(ranked_cross_product(pools, ('P', 'E'), 'PE', 6))
     grouped_rows.extend(ranked_cross_product(pools, ('C', 'E'), 'CE', 4))
@@ -221,7 +233,7 @@ def build(top, output):
 
     df = pd.DataFrame(grouped_rows, columns=columns).head(top)
 
-    print(f'Generated {len(df)} subfamily-diverse DOE formulations')
+    print(f'Generated {len(df)} coverage-driven DOE formulations')
     df.to_csv(output, index=False)
     print('\nFormulation summary:')
     print(df.groupby('group').size())
