@@ -1,0 +1,38 @@
+name: Candidate Universe Mining
+
+on:
+  workflow_dispatch:
+    inputs:
+      retmax:
+        description: 'PubMed records per query'
+        required: false
+        default: '20'
+
+jobs:
+  mine:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pandas
+
+      - name: Run candidate universe mining
+        run: |
+          python scripts/mine_candidate_universe.py --fetch-pubmed --retmax ${{ github.event.inputs.retmax || '20' }}
+
+      - name: Upload mining outputs
+        uses: actions/upload-artifact@v4
+        with:
+          name: candidate-universe-mining-results
+          path: outputs/*.csv
+          if-no-files-found: warn
