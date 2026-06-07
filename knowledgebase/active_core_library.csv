@@ -1,53 +1,53 @@
-material,module,category,entropy_module,evidence_level,priority,selection_rationale
-Trehalose,glass_water_replacement,sugar,structural,A,high,high PubMed signal and canonical sugar glass water replacement stabilizer
-Sucrose,glass_water_replacement,sugar,structural,A,high,high PubMed signal and canonical lyophilization sugar stabilizer
-Raffinose,glass_water_replacement,sugar,structural,B,medium,oligosaccharide glass former complementary to disaccharides
-Mannitol,glass_water_replacement,polyol,structural,A,high,high PubMed signal and common formulation bulking and osmotic stabilizer
-Glycerol,glass_water_replacement,polyol,structural,A,high,high PubMed signal and classic cryo/osmotic stabilizer
-Sorbitol,glass_water_replacement,polyol,structural,B,medium,polyol osmoprotectant with formulation relevance
-Ectoine,compatible_solute,osmolyte,structural,B,high,stress-protection osmolyte with strong mechanistic rationale
-Hydroxyectoine,compatible_solute,osmolyte,structural,B,high,ectoine-family osmolyte with protein and membrane protection rationale
-Betaine,compatible_solute,osmolyte,structural,A,high,high PubMed signal and canonical compatible solute
-TMAO,compatible_solute,osmolyte,structural,B,medium,protein-folding osmolyte complementary to betaine/ectoine
-Carnitine,compatible_solute,osmolyte,structural,B,medium,zwitterionic osmolyte candidate for hydration control
-Arginine,amino_acid_stabilizer,amino_acid,structural,A,high,high PubMed signal and anti-aggregation amino acid
-Proline,amino_acid_stabilizer,amino_acid,structural,A,high,high PubMed signal and osmoprotective amino acid
-Histidine,amino_acid_stabilizer,amino_acid,structural,B,high,biopharma formulation amino acid and buffering stabilizer
-Methionine,amino_acid_stabilizer,amino_acid,chemical,B,high,oxidation scavenging amino acid relevant to protein stability
-Leucine,amino_acid_stabilizer,amino_acid,structural,B,high,spray-drying and vaccine/biopharma excipient relevance
-PEG_mid_MW,polymer_crowding,polymer,interface,B,high,representative PEG crowding/interface stabilizer with controlled MW grouping
-PVP_mid_MW,polymer_crowding,polymer,interface,B,high,representative PVP stabilizer and anti-aggregation polymer
-Dextran_mid_MW,polymer_crowding,polysaccharide,interface,B,high,representative dextran crowding and matrix stabilizer
-Pullulan,polymer_crowding,polysaccharide,interface,B,high,film-forming sugar polymer with preservation relevance
-Ficoll,polymer_crowding,polymer,interface,B,medium,neutral crowding polymer complementary to dextran and PEG
-DMSO,cryobiology,cryoprotectant,chemical,A,high,high PubMed signal and canonical cryoprotectant despite assay risk
-Ethylene_Glycol,cryobiology,polyol,structural,A,medium,high PubMed signal and classic cryobiology cryoprotectant
-Propylene_Glycol,cryobiology,polyol,structural,B,medium,small polyol cryoprotectant/formulation cosolvent
-Hydroxyethyl_Starch,cryobiology,polymer,interface,B,high,cryobiology polymer used for extracellular protection and crowding
-Polyampholyte,cryobiology,polymer,constraint,B,high,emerging cryoprotective polymer class
-Carboxylated_Polylysine,cryobiology,polymer,constraint,B,medium,polyampholyte-like cryoprotective polymer candidate
-Poloxamer188,surfactant_membrane,surfactant,interface,B,high,membrane/interface protective surfactant and formulation stabilizer
-Poloxamer407,surfactant_membrane,surfactant,interface,B,medium,poloxamer family comparator with gel/interface behavior
-Tween20,surfactant_membrane,surfactant,interface,B,medium,nonionic surfactant for protein/interface stabilization
-Tween80,surfactant_membrane,surfactant,interface,B,medium,nonionic surfactant comparator with oxidation risk
-Cholesterol,surfactant_membrane,lipid,interface,A,high,high PubMed signal and membrane/liposome stabilizer
-Phosphatidylcholine,surfactant_membrane,lipid,interface,B,medium,major phospholipid membrane stabilizer candidate
-Silicic_Acid,mineralization,mineral,constraint,A,high,top PubMed signal and project-specific biomineralization route; aliases include TMOS/TEOS/silicates
-Calcium_Phosphate,mineralization,mineral,constraint,A,high,high PubMed signal and biocompatible mineral encapsulation route
-Calcium_Carbonate,mineralization,mineral,constraint,B,medium,pH-responsive mineral matrix comparator
-Glutathione,antioxidant,antioxidant,chemical,A,high,high PubMed signal and canonical redox buffer
-Trolox,antioxidant,antioxidant,chemical,B,high,water-soluble vitamin E analog for lipid/protein oxidation control
-N_Acetylcysteine,antioxidant,antioxidant,chemical,B,medium,thiol antioxidant and redox candidate
-Ascorbate,antioxidant,antioxidant,chemical,B,medium,classic antioxidant with possible pro-oxidant assay risk
-Ergothioneine,antioxidant,antioxidant,chemical,B,medium,stable biological antioxidant candidate
-EDTA,chelator,chelator,chemical,A,high,high PubMed signal and nuclease/metal chelation protection
-EGTA,chelator,chelator,chemical,B,medium,calcium-selective chelation comparator
-DTPA,chelator,chelator,chemical,B,medium,strong metal chelator candidate
-Phytate,chelator,chelator,chemical,B,medium,multivalent chelation and antioxidant-adjacent candidate
-Cyclodextrin,cyclodextrin,cyclic_oligosaccharide,interface,A,high,high PubMed signal and complexation/membrane interface stabilizer
-Hydroxypropyl_Beta_Cyclodextrin,cyclodextrin,cyclic_oligosaccharide,interface,B,high,biocompatible cyclodextrin derivative for solubilization and stabilization
-Alginate,hydrogel_constraint,hydrogel,constraint,A,medium,high PubMed signal but partly scaffold-driven; retained as ionic hydrogel constraint representative
-Chitosan,hydrogel_constraint,hydrogel,constraint,A,medium,high PubMed signal but partly delivery-driven; retained as cationic matrix representative
-Hyaluronic_Acid,hydrogel_constraint,hydrogel,constraint,B,medium,hydrated biopolymer matrix candidate with EV/protein compatibility relevance
-Agarose,hydrogel_constraint,hydrogel,constraint,B,medium,neutral gel confinement comparator
-SAIB,vaccine_formulation,vaccine_excipient,interface,B,medium,vaccine depot/formulation excipient candidate
+material,module,category,entropy_class,evidence_level,priority,selection_rationale
+Trehalose,glass_water_replacement,sugar,Structural,A,high,high PubMed signal and canonical sugar glass water replacement stabilizer
+Sucrose,glass_water_replacement,sugar,Structural,A,high,high PubMed signal and canonical lyophilization sugar stabilizer
+Raffinose,glass_water_replacement,sugar,Structural,B,medium,oligosaccharide glass former complementary to disaccharides
+Mannitol,glass_water_replacement,polyol,Structural,A,high,high PubMed signal and common formulation bulking and osmotic stabilizer
+Glycerol,glass_water_replacement,polyol,Structural,A,high,high PubMed signal and classic cryo/osmotic stabilizer
+Sorbitol,glass_water_replacement,polyol,Structural,B,medium,polyol osmoprotectant with formulation relevance
+Ectoine,compatible_solute,osmolyte,Structural,B,high,stress-protection osmolyte with strong mechanistic rationale
+Hydroxyectoine,compatible_solute,osmolyte,Structural,B,high,ectoine-family osmolyte with protein and membrane protection rationale
+Betaine,compatible_solute,osmolyte,Structural,A,high,high PubMed signal and canonical compatible solute
+TMAO,compatible_solute,osmolyte,Structural,B,medium,protein-folding osmolyte complementary to betaine/ectoine
+Carnitine,compatible_solute,osmolyte,Structural,B,medium,zwitterionic osmolyte candidate for hydration control
+Arginine,amino_acid_stabilizer,amino_acid,Structural,A,high,high PubMed signal and anti-aggregation amino acid
+Proline,amino_acid_stabilizer,amino_acid,Structural,A,high,high PubMed signal and osmoprotective amino acid
+Histidine,amino_acid_stabilizer,amino_acid,Structural,B,high,biopharma formulation amino acid and buffering stabilizer
+Methionine,amino_acid_stabilizer,amino_acid,Chemical,B,high,oxidation scavenging amino acid relevant to protein stability
+Leucine,amino_acid_stabilizer,amino_acid,Structural,B,high,spray-drying and vaccine/biopharma excipient relevance
+PEG_mid_MW,polymer_crowding,polymer,Structural,B,high,representative PEG crowding/interface stabilizer with controlled MW grouping
+PVP_mid_MW,polymer_crowding,polymer,Structural,B,high,representative PVP stabilizer and anti-aggregation polymer
+Dextran_mid_MW,polymer_crowding,polysaccharide,Structural,B,high,representative dextran crowding and matrix stabilizer
+Pullulan,polymer_crowding,polysaccharide,Structural,B,high,film-forming sugar polymer with preservation relevance
+Ficoll,polymer_crowding,polymer,Structural,B,medium,neutral crowding polymer complementary to dextran and PEG
+DMSO,cryobiology,cryoprotectant,Chemical,A,high,high PubMed signal and canonical cryoprotectant despite assay risk
+Ethylene_Glycol,cryobiology,polyol,Structural,A,medium,high PubMed signal and classic cryobiology cryoprotectant
+Propylene_Glycol,cryobiology,polyol,Structural,B,medium,small polyol cryoprotectant/formulation cosolvent
+Hydroxyethyl_Starch,cryobiology,polymer,Structural,B,high,cryobiology polymer used for extracellular protection and crowding
+Polyampholyte,cryobiology,polymer,Encapsulation,B,high,emerging cryoprotective polymer class
+Carboxylated_Polylysine,cryobiology,polymer,Encapsulation,B,medium,polyampholyte-like cryoprotective polymer candidate
+Poloxamer188,surfactant_membrane,surfactant,Structural,B,high,membrane/interface protective surfactant and formulation stabilizer
+Poloxamer407,surfactant_membrane,surfactant,Structural,B,medium,poloxamer family comparator with gel/interface behavior
+Tween20,surfactant_membrane,surfactant,Structural,B,medium,nonionic surfactant for protein/interface stabilization
+Tween80,surfactant_membrane,surfactant,Structural,B,medium,nonionic surfactant comparator with oxidation risk
+Cholesterol,surfactant_membrane,lipid,Structural,A,high,high PubMed signal and membrane/liposome stabilizer
+Phosphatidylcholine,surfactant_membrane,lipid,Structural,B,medium,major phospholipid membrane stabilizer candidate
+Silicic_Acid,mineralization,mineral,Encapsulation,A,high,top PubMed signal and project-specific biomineralization route; aliases include TMOS/TEOS/silicates
+Calcium_Phosphate,mineralization,mineral,Encapsulation,A,high,high PubMed signal and biocompatible mineral encapsulation route
+Calcium_Carbonate,mineralization,mineral,Encapsulation,B,medium,pH-responsive mineral matrix comparator
+Glutathione,antioxidant,antioxidant,Chemical,A,high,high PubMed signal and canonical redox buffer
+Trolox,antioxidant,antioxidant,Chemical,B,high,water-soluble vitamin E analog for lipid/protein oxidation control
+N_Acetylcysteine,antioxidant,antioxidant,Chemical,B,medium,thiol antioxidant and redox candidate
+Ascorbate,antioxidant,antioxidant,Chemical,B,medium,classic antioxidant with possible pro-oxidant assay risk
+Ergothioneine,antioxidant,antioxidant,Chemical,B,medium,stable biological antioxidant candidate
+EDTA,chelator,chelator,Chemical,A,high,high PubMed signal and nuclease/metal chelation protection
+EGTA,chelator,chelator,Chemical,B,medium,calcium-selective chelation comparator
+DTPA,chelator,chelator,Chemical,B,medium,strong metal chelator candidate
+Phytate,chelator,chelator,Chemical,B,medium,multivalent chelation and antioxidant-adjacent candidate
+Cyclodextrin,cyclodextrin,cyclic_oligosaccharide,Structural,A,high,high PubMed signal and complexation/membrane interface stabilizer
+Hydroxypropyl_Beta_Cyclodextrin,cyclodextrin,cyclic_oligosaccharide,Structural,B,high,biocompatible cyclodextrin derivative for solubilization and stabilization
+Alginate,hydrogel_constraint,hydrogel,Encapsulation,A,medium,high PubMed signal but partly scaffold-driven; retained as ionic hydrogel constraint representative
+Chitosan,hydrogel_constraint,hydrogel,Encapsulation,A,medium,high PubMed signal but partly delivery-driven; retained as cationic matrix representative
+Hyaluronic_Acid,hydrogel_constraint,hydrogel,Encapsulation,B,medium,hydrated biopolymer matrix candidate with EV/protein compatibility relevance
+Agarose,hydrogel_constraint,hydrogel,Encapsulation,B,medium,neutral gel confinement comparator
+SAIB,vaccine_formulation,vaccine_excipient,Encapsulation,B,medium,vaccine depot/formulation excipient candidate
