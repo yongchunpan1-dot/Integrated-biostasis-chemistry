@@ -18,13 +18,21 @@ jobs:
 
       - run: mkdir -p outputs
 
+      - name: Sync evidence into state matrix
+        run: |
+          python scripts/sync_state_evidence.py \
+            --output outputs/state_coverage_matrix_evidence_synced.csv
+
       - name: Generate stratified formulations
         run: |
+          cp outputs/state_coverage_matrix_evidence_synced.csv knowledgebase/state_coverage_matrix.csv
           python ranking/generate_formulations.py \
             --top 48 \
             --output outputs/top48_formulations.csv
 
       - uses: actions/upload-artifact@v4
         with:
-          name: top48-formulations
-          path: outputs/top48_formulations.csv
+          name: ibc-formulation-outputs
+          path: |
+            outputs/top48_formulations.csv
+            outputs/state_coverage_matrix_evidence_synced.csv
