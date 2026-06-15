@@ -1,0 +1,4 @@
+material,evidence_type,pmid_or_doi,preservation_target,experimental_context,evidence_strength,reason_for_score
+Trehalose,Literature,,,Membrane/Protein stabilization during drying,Medium,Glass formation and water replacement
+Ectoine,Literature,,,Membrane and protein protection under osmotic stress,Medium,Preferential exclusion mechanism
+Silicic_Acid,Hypothesis,,,Biomineral confinement platform,Low,Project-specific preservation concept
