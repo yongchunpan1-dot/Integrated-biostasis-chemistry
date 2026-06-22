@@ -1,53 +1,51 @@
-material,entropy_control_label,family,subfamily,membrane_score,protein_score,nucleic_acid_score,assay_risk,evidence_count,confidence,evidence_status,notes
-Trehalose,Structural_Stabilization,Sugar,Disaccharide,3,3,2,0,0,Unknown,Unreviewed,glass formation and water replacement; broad state stabilization
-Sucrose,Structural_Stabilization,Sugar,Disaccharide,3,3,2,0,0,Unknown,Unreviewed,nonreducing disaccharide glass former and lyophilization stabilizer
-Raffinose,Structural_Stabilization,Sugar,Oligosaccharide,2,3,2,0,0,Unknown,Unreviewed,oligosaccharide glass former; improves dry-state matrix stability
-Mannitol,Structural_Stabilization,Polyol,Sugar_Alcohol,2,2,1,0,0,Unknown,Unreviewed,polyol bulking and osmotic stabilizer; crystallization risk should be monitored
-Glycerol,Structural_Stabilization,Polyol,Glycerol_Type,2,2,2,0,0,Unknown,Unreviewed,hydration maintenance and cryoprotection
-Sorbitol,Structural_Stabilization,Polyol,Sugar_Alcohol,2,2,1,0,0,Unknown,Unreviewed,polyol osmotic and hydration stabilizer
-Ethylene_Glycol,Structural_Stabilization,Polyol,Glycol,2,1,1,2,0,Unknown,Unreviewed,classic cryoprotective polyol; toxicity/assay risk
-Propylene_Glycol,Structural_Stabilization,Polyol,Glycol,1,1,1,2,0,Unknown,Unreviewed,small polyol cosolvent/cryoprotectant; assay risk
-Ectoine,Structural_Stabilization,Compatible_Solute,Ectoine_Family,3,3,2,0,0,Unknown,Unreviewed,compatible solute; preferential exclusion and hydration shell stabilization
-Hydroxyectoine,Structural_Stabilization,Compatible_Solute,Ectoine_Family,3,3,2,0,0,Unknown,Unreviewed,ectoine-family compatible solute with strong hydration protection
-Betaine,Structural_Stabilization,Compatible_Solute,Methylamine_Osmolyte,2,2,2,0,0,Unknown,Unreviewed,zwitterionic osmolyte; broad compatible-solute stabilization
-TMAO,Structural_Stabilization,Compatible_Solute,Methylamine_Osmolyte,1,3,1,0,0,Unknown,Unreviewed,protein-folding osmolyte; weaker direct membrane/NA rationale
-Carnitine,Structural_Stabilization,Compatible_Solute,Quaternary_Amine,1,2,1,0,0,Unknown,Unreviewed,zwitterionic osmolyte candidate
-Arginine,Structural_Stabilization,Amino_Acid,Basic_AA,1,3,1,0,0,Unknown,Unreviewed,protein anti-aggregation and solubility enhancer
-Proline,Structural_Stabilization,Amino_Acid,Osmoprotective_AA,2,3,1,0,0,Unknown,Unreviewed,osmoprotective amino acid and protein stabilizer
-Histidine,Structural_Stabilization,Amino_Acid,Basic_AA,1,2,1,0,0,Unknown,Unreviewed,biopharma amino acid stabilizer and mild buffering role
-Leucine,Structural_Stabilization,Amino_Acid,Hydrophobic_AA,1,2,1,0,0,Unknown,Unreviewed,spray-drying and particle morphology stabilizer
-Methionine,Chemical_Protection,Amino_Acid,Sulfur_AA,1,3,1,0,0,Unknown,Unreviewed,sacrificial oxidation sink for proteins and formulation systems
-PEG_mid_MW,Structural_Stabilization,Polymer,PEG,2,2,1,1,0,Unknown,Unreviewed,polymer crowding and interface stabilization; cleanup/PCR interference risk
-PVP_mid_MW,Structural_Stabilization,Polymer,PVP,2,2,1,1,0,Unknown,Unreviewed,polymer anti-aggregation and matrix stabilizer; cleanup risk
-Dextran_mid_MW,Structural_Stabilization,Polymer,Polysaccharide_Polymer,2,2,1,1,0,Unknown,Unreviewed,neutral polysaccharide crowding/matrix stabilizer
-Pullulan,Structural_Stabilization,Polymer,Polysaccharide_Polymer,2,3,2,1,0,Unknown,Unreviewed,film-forming sugar polymer and dry-state matrix stabilizer
-Ficoll,Structural_Stabilization,Polymer,Polysaccharide_Polymer,1,2,1,1,0,Unknown,Unreviewed,neutral crowding polymer; viscosity and cleanup risk
-Hydroxyethyl_Starch,Structural_Stabilization,Polymer,Starch_Derivative,2,2,1,1,0,Unknown,Unreviewed,extracellular cryoprotective polymer and crowding stabilizer
-Polyampholyte,Physical_Encapsulation,Polymer,Polyampholyte,2,2,2,1,0,Unknown,Unreviewed,polyionic confinement and cryoprotective matrix behavior
-Carboxylated_Polylysine,Physical_Encapsulation,Polymer,Polyampholyte,2,2,2,1,0,Unknown,Unreviewed,polyampholyte-like polymer; confinement and cryoprotection
-Poloxamer188,Structural_Stabilization,Surfactant,Poloxamer,3,2,1,0,0,Unknown,Unreviewed,membrane and air-liquid interface stabilization
-Poloxamer407,Structural_Stabilization,Surfactant,Poloxamer,2,1,1,1,0,Unknown,Unreviewed,poloxamer comparator with thermoresponsive/viscosity effects
-Tween20,Structural_Stabilization,Surfactant,Tween,2,2,1,1,0,Unknown,Unreviewed,nonionic surfactant for interface protection; assay interference possible
-Tween80,Structural_Stabilization,Surfactant,Tween,2,2,1,1,0,Unknown,Unreviewed,nonionic surfactant with oxidation/degradation risk
-Cholesterol,Structural_Stabilization,Lipid,Sterol,3,1,0,1,0,Unknown,Unreviewed,membrane packing and rigidity stabilizer; low protein/NA direct benefit
-Phosphatidylcholine,Structural_Stabilization,Lipid,Phospholipid,3,1,0,1,0,Unknown,Unreviewed,phospholipid membrane support; low protein/NA direct benefit
-Cyclodextrin,Structural_Stabilization,Cyclodextrin,Native_CD,2,2,1,1,0,Unknown,Unreviewed,complexation and membrane/interface stabilization; cargo extraction risk possible
-Hydroxypropyl_Beta_Cyclodextrin,Structural_Stabilization,Cyclodextrin,Modified_CD,2,2,1,1,0,Unknown,Unreviewed,biocompatible cyclodextrin derivative; solubilization and interface effects
-DMSO,Chemical_Protection,Cryoprotectant,Penetrating_CPA,2,2,2,2,0,Unknown,Unreviewed,cryoprotectant and solvent; high assay and membrane perturbation risk
-Glutathione,Chemical_Protection,Antioxidant,Thiol_Antioxidant,2,3,2,0,0,Unknown,Unreviewed,redox buffer and oxidation suppression
-Trolox,Chemical_Protection,Antioxidant,VitaminE_Analog,2,3,1,0,0,Unknown,Unreviewed,lipid/protein oxidation suppression
-N_Acetylcysteine,Chemical_Protection,Antioxidant,Thiol_Antioxidant,1,2,1,0,0,Unknown,Unreviewed,thiol antioxidant and redox protection
-Ascorbate,Chemical_Protection,Antioxidant,VitaminC_Analog,1,2,1,1,0,Unknown,Unreviewed,antioxidant with possible pro-oxidant behavior depending on metal context
-Ergothioneine,Chemical_Protection,Antioxidant,Sulfur_Antioxidant,2,2,1,0,0,Unknown,Unreviewed,stable biological antioxidant candidate
-EDTA,Chemical_Protection,Chelator,Broad_Chelator,1,2,3,1,0,Unknown,Unreviewed,metal chelation and nuclease inhibition; may affect metal-dependent assays/enzymes
-EGTA,Chemical_Protection,Chelator,Calcium_Chelator,1,2,2,1,0,Unknown,Unreviewed,calcium-selective chelation; possible assay/enzyme interference
-DTPA,Chemical_Protection,Chelator,Broad_Chelator,1,2,3,1,0,Unknown,Unreviewed,strong metal chelation and nuclease suppression; assay risk
-Phytate,Chemical_Protection,Chelator,Polyphosphate_Chelator,1,1,2,1,0,Unknown,Unreviewed,multivalent chelator and antioxidant-adjacent candidate
-Silicic_Acid,Physical_Encapsulation,Mineral,Silica,3,3,3,1,0,Unknown,Unreviewed,biomineral confinement; isolates state and limits exposure/diffusion
-Calcium_Phosphate,Physical_Encapsulation,Mineral,CaP,3,3,3,1,0,Unknown,Unreviewed,biocompatible mineral encapsulation and confinement
-Calcium_Carbonate,Physical_Encapsulation,Mineral,Carbonate,2,2,2,1,0,Unknown,Unreviewed,pH-responsive mineral matrix and confinement candidate
-Alginate,Physical_Encapsulation,Hydrogel,Ionic_Hydrogel,2,2,2,1,0,Unknown,Unreviewed,ionic hydrogel confinement; diffusion restriction and matrix protection
-Chitosan,Physical_Encapsulation,Hydrogel,Cationic_Hydrogel,2,2,2,1,0,Unknown,Unreviewed,cationic polymeric confinement; nucleic acid interaction possible
-Hyaluronic_Acid,Physical_Encapsulation,Hydrogel,ECM_Hydrogel,2,2,2,1,0,Unknown,Unreviewed,hydrated biopolymer matrix and confinement candidate
-Agarose,Physical_Encapsulation,Hydrogel,Neutral_Hydrogel,2,2,2,0,0,Unknown,Unreviewed,neutral gel matrix confinement with low chemical interference
-SAIB,Physical_Encapsulation,Depot_Matrix,Depot_Forming,1,1,1,1,0,Unknown,Unreviewed,vaccine depot/formulation excipient; confinement candidate but uncertain assay compatibility
+material,entropy_control_label,family,subfamily,membrane_score,protein_score,nucleic_acid_score,assay_risk,evidence_count,confidence,evidence_status,pmid_count,domain_count,mention_count,mined_domains,notes
+Silicic_Acid,Physical_Encapsulation,Mineral,Silica,3,3,3,1,100,High,Mined_Literature_Supported,100,6,119,BIOMINERALIZATION;CHELATION;EV;OSMOLYTE;PROTEIN;RNA_DNA,mined biomineral/confinement candidate; protective physical microenvironment
+Trehalose,Structural_Stabilization,Sugar,Disaccharide,3,3,2,0,68,High,Mined_Literature_Supported,68,9,83,CHELATION;CRYO;EV;EXCIPIENT;HYDROGEL;OSMOLYTE;PROTEIN;RNA_DNA;VACCINE,mined sugar/glass-forming excipient; supports structural stabilization
+Calcium_Phosphate,Physical_Encapsulation,Mineral,CaP,3,3,3,1,58,High,Mined_Literature_Supported,58,3,75,BIOMINERALIZATION;CHELATION;VACCINE,mined biomineral/confinement candidate; protective physical microenvironment
+Sucrose,Structural_Stabilization,Sugar,Disaccharide,3,3,2,0,56,High,Mined_Literature_Supported,56,6,59,CRYO;EV;EXCIPIENT;OSMOLYTE;PROTEIN;VACCINE,mined sugar/glass-forming excipient; supports structural stabilization
+Chitosan,Physical_Encapsulation,Hydrogel,Cationic_Hydrogel,2,2,2,1,37,High,Mined_Literature_Supported,37,5,37,BIOMINERALIZATION;EV;EXCIPIENT;HYDROGEL;PROTEIN,mined hydrogel/confinement candidate; diffusion restriction and matrix protection
+Alginate,Physical_Encapsulation,Hydrogel,Ionic_Hydrogel,2,2,2,1,34,High,Mined_Literature_Supported,34,5,35,BIOMINERALIZATION;EV;EXCIPIENT;HYDROGEL;PROTEIN,mined hydrogel/confinement candidate; diffusion restriction and matrix protection
+Glycerol,Structural_Stabilization,Polyol,Glycerol_Type,2,2,2,0,29,High,Mined_Literature_Supported,29,7,29,BIOMINERALIZATION;CRYO;EV;HYDROGEL;OSMOLYTE;PROTEIN;RNA_DNA,mined polyol; hydration/osmotic stabilization
+Glutathione,Chemical_Protection,Antioxidant,Thiol_Antioxidant,2,3,2,0,27,High,Mined_Literature_Supported,27,9,28,ANTIOXIDANT;BIOMINERALIZATION;CHELATION;CRYO;EV;HYDROGEL;OSMOLYTE;PROTEIN;VACCINE,mined antioxidant; chemical damage suppression
+Mannitol,Structural_Stabilization,Polyol,Sugar_Alcohol,2,2,1,0,27,High,Mined_Literature_Supported,27,8,30,ANTIOXIDANT;BIOMINERALIZATION;CHELATION;CRYO;EV;EXCIPIENT;OSMOLYTE;PROTEIN,mined polyol; hydration/osmotic stabilization
+Cholesterol,Structural_Stabilization,Lipid,Sterol,3,1,0,1,25,High,Mined_Literature_Supported,25,5,29,BIOMINERALIZATION;EV;EXCIPIENT;HYDROGEL;RNA_DNA,mined lipid/interface candidate; membrane packing support but limited direct NA benefit
+Proline,Structural_Stabilization,Amino_Acid,Osmoprotective_AA,2,3,1,0,24,High,Mined_Literature_Supported,24,6,24,CRYO;EV;OSMOLYTE;PROTEIN;RNA_DNA;VACCINE,mined amino-acid excipient; protein solubility/osmoprotection rationale
+Glycine,Structural_Stabilization,Amino_Acid,Small_AA,1,2,1,0,20,High,Mined_Literature_Supported,20,4,21,BIOMINERALIZATION;EV;PROTEIN;RNA_DNA,mined amino-acid excipient; protein solubility/osmoprotection rationale
+Arginine,Structural_Stabilization,Amino_Acid,Basic_AA,1,3,1,0,17,High,Mined_Literature_Supported,17,6,18,BIOMINERALIZATION;CRYO;EXCIPIENT;OSMOLYTE;PROTEIN;RNA_DNA,mined amino-acid excipient; protein solubility/osmoprotection rationale
+Cyclodextrin,Structural_Stabilization,Cyclodextrin,Native_CD,2,2,1,1,16,High,Mined_Literature_Supported,16,4,16,EV;EXCIPIENT;HYDROGEL;PROTEIN,mined cyclodextrin/interface candidate; monitor membrane cargo extraction risk
+EDTA,Chemical_Protection,Chelator,Broad_Chelator,1,2,3,2,15,High,Mined_Literature_Supported,15,6,15,ANTIOXIDANT;CHELATION;EV;EXCIPIENT;PROTEIN;RNA_DNA,mined chelation/buffer candidate; assay/enzyme interference risk should be tested
+Hyaluronic_Acid,Physical_Encapsulation,Hydrogel,ECM_Hydrogel,2,2,2,1,15,High,Mined_Literature_Supported,15,4,17,EV;HYDROGEL;PROTEIN;VACCINE,mined hydrogel/confinement candidate; diffusion restriction and matrix protection
+Betaine,Structural_Stabilization,Compatible_Solute,Methylamine_Osmolyte,2,2,2,0,15,High,Mined_Literature_Supported,15,3,15,CRYO;OSMOLYTE;PROTEIN,mined compatible solute/osmolyte; preferential hydration/exclusion rationale
+Calcium_Carbonate,Physical_Encapsulation,Mineral,Carbonate,2,2,2,1,11,High,Mined_Literature_Supported,11,2,11,BIOMINERALIZATION;HYDROGEL,mined biomineral/confinement candidate; protective physical microenvironment
+Citrate,Chemical_Protection,Chelator_Buffer,Citrate_Buffer,1,1,2,1,10,High,Mined_Literature_Supported,10,8,10,ANTIOXIDANT;CHELATION;CRYO;EXCIPIENT;HYDROGEL;OSMOLYTE;PROTEIN;RNA_DNA,mined chelation/buffer candidate; assay/enzyme interference risk should be tested
+Histidine,Structural_Stabilization,Amino_Acid,Buffering_AA,1,2,1,0,10,High,Mined_Literature_Supported,10,5,11,ANTIOXIDANT;EXCIPIENT;OSMOLYTE;PROTEIN;RNA_DNA,mined amino-acid excipient; protein solubility/osmoprotection rationale
+Sorbitol,Structural_Stabilization,Polyol,Sugar_Alcohol,2,2,1,0,10,High,Mined_Literature_Supported,10,5,10,ANTIOXIDANT;CRYO;EXCIPIENT;OSMOLYTE;PROTEIN,mined polyol; hydration/osmotic stabilization
+Ectoine,Structural_Stabilization,Compatible_Solute,Ectoine_Family,3,3,2,0,10,High,Mined_Literature_Supported,10,2,10,OSMOLYTE;PROTEIN,mined compatible solute/osmolyte; preferential hydration/exclusion rationale
+Phosphatidylcholine,Structural_Stabilization,Lipid,Phospholipid,3,1,0,1,9,Medium,Mined_Literature_Supported,9,1,9,VACCINE,mined lipid/interface candidate; membrane packing support but limited direct NA benefit
+Leucine,Structural_Stabilization,Amino_Acid,Hydrophobic_AA,1,2,1,0,8,High,Mined_Literature_Supported,8,4,10,ANTIOXIDANT;CRYO;EXCIPIENT;PROTEIN,mined amino-acid excipient; protein solubility/osmoprotection rationale
+Lysine,Structural_Stabilization,Amino_Acid,Basic_AA,1,2,1,0,8,High,Mined_Literature_Supported,8,4,8,EXCIPIENT;OSMOLYTE;PROTEIN;RNA_DNA,mined amino-acid excipient; protein solubility/osmoprotection rationale
+Methionine,Chemical_Protection,Amino_Acid,Sulfur_AA,1,3,1,0,8,High,Mined_Literature_Supported,8,4,8,ANTIOXIDANT;EXCIPIENT;PROTEIN;RNA_DNA,mined sulfur amino acid; sacrificial oxidation sink
+Ascorbate,Chemical_Protection,Antioxidant,VitaminC_Analog,1,2,1,1,7,High,Mined_Literature_Supported,7,3,7,ANTIOXIDANT;BIOMINERALIZATION;HYDROGEL,mined antioxidant; chemical damage suppression
+Taurine,Structural_Stabilization,Compatible_Solute,Sulfonic_Acid_Osmolyte,1,2,1,0,7,High,Mined_Literature_Supported,7,3,7,EV;OSMOLYTE;PROTEIN,mined compatible solute/osmolyte; preferential hydration/exclusion rationale
+Agarose,Physical_Encapsulation,Hydrogel,Neutral_Hydrogel,2,2,2,0,7,Medium,Mined_Literature_Supported,7,2,7,HYDROGEL;RNA_DNA,mined hydrogel/confinement candidate; diffusion restriction and matrix protection
+Hydroxyectoine,Structural_Stabilization,Compatible_Solute,Ectoine_Family,3,3,2,0,7,Medium,Mined_Literature_Supported,7,2,7,OSMOLYTE;PROTEIN,mined compatible solute/osmolyte; preferential hydration/exclusion rationale
+Serine,Structural_Stabilization,Amino_Acid,Polar_AA,1,2,1,0,6,High,Mined_Literature_Supported,6,4,6,ANTIOXIDANT;OSMOLYTE;PROTEIN;RNA_DNA,mined amino-acid excipient; protein solubility/osmoprotection rationale
+Glutamate,Structural_Stabilization,Amino_Acid,Acidic_AA,1,2,1,0,6,High,Mined_Literature_Supported,6,3,6,OSMOLYTE;PROTEIN;RNA_DNA,mined amino-acid excipient; protein solubility/osmoprotection rationale
+PVA,Structural_Stabilization,Polymer,Film_Forming_Polymer,2,2,1,1,6,High,Mined_Literature_Supported,6,3,6,BIOMINERALIZATION;EXCIPIENT;HYDROGEL,mined polymer/interface or matrix candidate; cleanup/viscosity risk should be tested
+TMAO,Structural_Stabilization,Compatible_Solute,Methylamine_Osmolyte,1,3,1,0,6,Medium,Mined_Literature_Supported,6,2,6,OSMOLYTE;PROTEIN,mined compatible solute/osmolyte; preferential hydration/exclusion rationale
+Pectin,Physical_Encapsulation,Hydrogel,Polysaccharide_Hydrogel,2,2,2,1,5,High,Mined_Literature_Supported,5,4,5,EV;EXCIPIENT;HYDROGEL;PROTEIN,mined hydrogel/confinement candidate; diffusion restriction and matrix protection
+Glutamine,Structural_Stabilization,Amino_Acid,Polar_AA,1,2,1,0,4,High,Mined_Literature_Supported,4,3,4,OSMOLYTE;PROTEIN;RNA_DNA,mined amino-acid excipient; protein solubility/osmoprotection rationale
+Inositol,Structural_Stabilization,Polyol,Polyol,1,2,1,0,4,Medium,Mined_Literature_Supported,4,2,4,OSMOLYTE;PROTEIN,mined polyol; hydration/osmotic stabilization
+Silk_Fibroin,Physical_Encapsulation,Protein_Polymer,Silk_Matrix,2,2,1,1,4,Medium,Mined_Literature_Supported,4,2,4,EV;HYDROGEL,mined protein polymer matrix; confinement/film-forming candidate
+Lecithin,Structural_Stabilization,Lipid,Phospholipid_Mixture,2,1,0,1,4,Medium,Mined_Literature_Supported,4,1,4,VACCINE,mined lipid/interface candidate; membrane packing support but limited direct NA benefit
+Maltodextrin,Structural_Stabilization,Sugar_Polymer,Sugar_Polymer,2,2,2,0,3,High,Mined_Literature_Supported,3,3,3,CRYO;OSMOLYTE;PROTEIN,mined sugar polymer; matrix/crowding stabilizer
+CMC,Structural_Stabilization,Cellulose_Polymer,Cellulose_Derivative,2,1,1,1,2,Low,Mined_Literature_Supported,2,2,2,HYDROGEL;PROTEIN,mined polymer/interface or matrix candidate; cleanup/viscosity risk should be tested
+Carnitine,Structural_Stabilization,Compatible_Solute,Quaternary_Amine,1,2,1,0,2,Low,Mined_Literature_Supported,2,2,2,OSMOLYTE;PROTEIN,mined compatible solute/osmolyte; preferential hydration/exclusion rationale
+Gellan_Gum,Physical_Encapsulation,Hydrogel,Polysaccharide_Hydrogel,2,2,2,1,2,Low,Mined_Literature_Supported,2,2,2,EV;HYDROGEL,mined hydrogel/confinement candidate; diffusion restriction and matrix protection
+Sarcosine,Structural_Stabilization,Compatible_Solute,Methylated_Amino_Acid,1,2,1,0,2,Low,Mined_Literature_Supported,2,2,2,OSMOLYTE;PROTEIN,mined compatible solute/osmolyte; preferential hydration/exclusion rationale
+DTPA,Chemical_Protection,Chelator,Broad_Chelator,1,2,3,2,2,Low,Mined_Literature_Supported,2,1,2,CHELATION,mined chelation/buffer candidate; assay/enzyme interference risk should be tested
+Maltose,Structural_Stabilization,Sugar,Disaccharide,2,2,1,0,2,Low,Mined_Literature_Supported,2,1,2,CRYO,mined sugar/glass-forming excipient; supports structural stabilization
+Trolox,Chemical_Protection,Antioxidant,VitaminE_Analog,2,3,1,0,2,Low,Mined_Literature_Supported,2,1,2,ANTIOXIDANT,mined antioxidant; chemical damage suppression
+Ergothioneine,Chemical_Protection,Antioxidant,Sulfur_Antioxidant,2,2,1,0,1,Low,Mined_Literature_Supported,1,1,1,ANTIOXIDANT,mined antioxidant; chemical damage suppression
+Raffinose,Structural_Stabilization,Sugar,Oligosaccharide,3,3,2,0,1,Low,Mined_Literature_Supported,1,1,1,CRYO,mined sugar/glass-forming excipient; supports structural stabilization
+Pullulan,Structural_Stabilization,Polysaccharide,Film_Forming_Polysaccharide,2,3,2,1,1,Low,Mined_Literature_Supported,1,1,1,EXCIPIENT,mined polymer/interface or matrix candidate; cleanup/viscosity risk should be tested
