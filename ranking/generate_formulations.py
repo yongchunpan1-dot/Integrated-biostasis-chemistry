@@ -4,7 +4,12 @@ import pandas as pd
 import numpy as np
 
 
-MATRIX_PATH = 'knowledgebase/state_coverage_matrix.csv'
+MATRIX_PATH = 'knowledgebase/core_material_state_matrix.csv'
+
+
+STRUCTURAL_LABEL = 'Structural_Stabilization'
+CHEMICAL_LABEL = 'Chemical_Protection'
+ENCAPSULATION_LABEL = 'Physical_Encapsulation'
 
 
 def balance(m, p, n):
@@ -188,12 +193,12 @@ def build(top, output):
     if missing:
         raise ValueError(f'{MATRIX_PATH} missing required columns: {sorted(missing)}')
 
-    physical = [row_to_material(r) for _, r in m[m.entropy_control_label == 'Physical_Stabilization'].iterrows()]
-    chemical = [row_to_material(r) for _, r in m[m.entropy_control_label == 'Chemical_Quenching'].iterrows()]
-    encapsulation = [row_to_material(r) for _, r in m[m.entropy_control_label == 'Isolation_Encapsulation'].iterrows()]
+    structural = [row_to_material(r) for _, r in m[m.entropy_control_label == STRUCTURAL_LABEL].iterrows()]
+    chemical = [row_to_material(r) for _, r in m[m.entropy_control_label == CHEMICAL_LABEL].iterrows()]
+    encapsulation = [row_to_material(r) for _, r in m[m.entropy_control_label == ENCAPSULATION_LABEL].iterrows()]
 
     pools = {
-        'P': physical,
+        'S': structural,
         'C': chemical,
         'E': encapsulation,
     }
@@ -215,21 +220,21 @@ def build(top, output):
 
     grouped_rows = []
 
-    # Same-principle formulations: broad coverage inside each entropy-control principle.
-    grouped_rows.extend(ranked_combinations(physical, 'P2', 8, combo_size=2))
+    # Same-principle formulations: broad coverage inside each preservation principle.
+    grouped_rows.extend(ranked_combinations(structural, 'S2', 8, combo_size=2))
     grouped_rows.extend(ranked_combinations(chemical, 'C2', 8, combo_size=2))
     grouped_rows.extend(ranked_combinations(encapsulation, 'E2', 8, combo_size=2))
 
     # Dual-principle formulations: retain cross-mechanism candidates without allowing one family pair to dominate.
-    grouped_rows.extend(ranked_cross_product(pools, ('P', 'C'), 'PC', 6))
-    grouped_rows.extend(ranked_cross_product(pools, ('P', 'E'), 'PE', 6))
+    grouped_rows.extend(ranked_cross_product(pools, ('S', 'C'), 'SC', 6))
+    grouped_rows.extend(ranked_cross_product(pools, ('S', 'E'), 'SE', 6))
     grouped_rows.extend(ranked_cross_product(pools, ('C', 'E'), 'CE', 4))
 
     # Triple-principle formulations: include balanced and target-biased designs.
-    grouped_rows.extend(ranked_cross_product(pools, ('P', 'C', 'E'), 'PCE-B', 2, desired_bias='Balanced'))
-    grouped_rows.extend(ranked_cross_product(pools, ('P', 'C', 'E'), 'PCE-M', 2, desired_bias='Membrane'))
-    grouped_rows.extend(ranked_cross_product(pools, ('P', 'C', 'E'), 'PCE-P', 2, desired_bias='Protein'))
-    grouped_rows.extend(ranked_cross_product(pools, ('P', 'C', 'E'), 'PCE-N', 2, desired_bias='Nucleic_Acid'))
+    grouped_rows.extend(ranked_cross_product(pools, ('S', 'C', 'E'), 'SCE-B', 2, desired_bias='Balanced'))
+    grouped_rows.extend(ranked_cross_product(pools, ('S', 'C', 'E'), 'SCE-M', 2, desired_bias='Membrane'))
+    grouped_rows.extend(ranked_cross_product(pools, ('S', 'C', 'E'), 'SCE-P', 2, desired_bias='Protein'))
+    grouped_rows.extend(ranked_cross_product(pools, ('S', 'C', 'E'), 'SCE-N', 2, desired_bias='Nucleic_Acid'))
 
     df = pd.DataFrame(grouped_rows, columns=columns).head(top)
 
