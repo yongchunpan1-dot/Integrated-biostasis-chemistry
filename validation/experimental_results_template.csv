@@ -1,4 +1,8 @@
-formulation_id,membrane_score,protein_score,nucleic_acid_score,tfi_real,notes
-F001,,,,,
-F002,,,,,
-F003,,,,,
+formulation_id,materials,membrane_recovery,hrp_activity,pcr_delta_ct,cleanup_pass,tfi_real,notes
+IBC-S2-001,,,,,,,
+IBC-C2-001,,,,,,,
+IBC-E2-001,,,,,,,
+IBC-SC-001,,,,,,,
+IBC-SE-001,,,,,,,
+IBC-CE-001,,,,,,,
+IBC-SCE-B-001,,,,,,,
